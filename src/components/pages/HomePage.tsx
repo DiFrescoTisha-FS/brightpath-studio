@@ -6,8 +6,7 @@ const Navbar = () => (
       <div className="flex items-center justify-between h-20">
         <div className="flex-shrink-0">
           <div className="flex items-center space-x-2">
-            <Lightbulb className="h-8 w-8 text-gold" />
-            <span className="text-white font-poppins font-bold text-xl">BrightPath</span>
+            <img className="h-16 w-auto" src="/images/brightpath-logo-dark.png" alt="BrightPath Web Studio Logo" />
           </div>
         </div>
         <div className="hidden md:block">
