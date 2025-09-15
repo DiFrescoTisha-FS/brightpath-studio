@@ -1,12 +1,12 @@
 import React from 'react'
 import HomePage from './components/pages/HomePage';
-import ContactPage from './components/pages/ContactPage'
+import Footer from './components/Footer';
 
 function App() {
   return (
     <>
       <HomePage />
-      <ContactPage />
+      <Footer />
     </>
   )
 }

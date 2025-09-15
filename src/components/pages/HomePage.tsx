@@ -1,4 +1,5 @@
 import { Lightbulb, Compass, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => (
   <nav className="bg-midnight/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
@@ -14,7 +15,7 @@ const Navbar = () => (
             <a href="#" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato transition-colors">Services</a>
             <a href="#" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato transition-colors">About</a>
             <a href="#" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato transition-colors">Portfolio</a>
-            <a href="#" className="bg-gold text-midnight font-bold font-lato px-4 py-2 rounded-md text-sm hover:bg-yellow-400 transition-colors">Contact Us</a>
+            <Link to="/contact" className="bg-gold text-midnight font-bold font-lato px-4 py-2 rounded-md text-sm hover:bg-yellow-400 transition-colors">Contact Us</Link>
           </div>
         </div>
       </div>
