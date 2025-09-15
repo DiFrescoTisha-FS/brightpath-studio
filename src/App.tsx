@@ -1,7 +1,13 @@
 import HomePage from './components/pages/HomePage';
+import Footer from './components/Footer';
 
 function App() {
-  return <HomePage />;
+  return (
+    <>
+      <HomePage />
+      <Footer />
+    </>
+  )
 }
 
-export default App;
+export default App
