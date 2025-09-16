@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.tsx';
 import ContactPage from './components/pages/ContactPage';
+import AboutPage from './components/pages/AboutPage';
 import TermsPage from './components/pages/TermsPage';
 import PrivacyPage from './components/pages/PrivacyPage';
 import './index.css';
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <ContactPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
   },
   {
     path: "/terms-of-service",

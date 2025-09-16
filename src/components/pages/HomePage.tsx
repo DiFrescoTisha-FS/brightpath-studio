@@ -13,7 +13,7 @@ const Navbar = () => (
         <div className="hidden md:block">
           <div className="ml-10 flex items-baseline space-x-4">
             <a href="#" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato transition-colors">Services</a>
-            <a href="#" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato transition-colors">About</a>
+            <Link to="/about" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato transition-colors">About</Link>
             <a href="#" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato transition-colors">Portfolio</a>
             <Link to="/contact" className="bg-gold text-midnight font-bold font-lato px-4 py-2 rounded-md text-sm hover:bg-yellow-400 transition-colors">Contact Us</Link>
           </div>
