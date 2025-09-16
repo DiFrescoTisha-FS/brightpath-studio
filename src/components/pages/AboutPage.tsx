@@ -1,19 +1,14 @@
+/*
 Role & Goal:
 You are an expert frontend developer specializing in React, TypeScript, Tailwind CSS, and Framer Motion. Your task is to create a single-file React component named AboutPage.tsx. The page should feature a hero section and a scrolling timeline with a unique animation: the entire page starts in black and white and smoothly transitions to full color as the user begins to scroll. The background image should remain fixed throughout the scroll.
 
 Technology Stack:
+- Framework: React with TypeScript
+- Styling: Tailwind CSS
+- Animation: Framer Motion
 
-Framework: React with TypeScript
-
-Styling: Tailwind CSS
-
-Animation: Framer Motion
-
-Component Structure & Content:
-
-AboutPage.tsx
-
-TypeScript
+Component Structure & Content: AboutPage.tsx
+*/
 
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
