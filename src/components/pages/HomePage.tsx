@@ -26,9 +26,9 @@ const Navbar = () => (
 const HeroSection = () => (
   <section 
     className="bg-cover bg-center text-white min-h-screen flex items-center justify-center pt-20" 
-    style={{ backgroundImage: "linear-gradient(rgba(26, 34, 56, 0.7), rgba(26, 34, 56, 0.7)), url('https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?auto=compress&cs=tinysrgb&w=1200')" }}
+    style={{ backgroundImage: "linear-gradient(rgba(26, 34, 56, 0.7), rgba(26, 34, 56, 0.7)), url('/images/NEW LIGHTHOUSE BACKGROUND.jpeg')" }}
   >
-    <div className="bg-midnight/50 p-8 rounded-lg text-center max-w-4xl mx-auto px-4 backdrop-blur-sm">
+    <div className="text-center max-w-4xl mx-auto px-4">
       <h1 className="text-4xl md:text-6xl font-poppins font-bold mb-4">
         Guiding Your Business to Shine Bright Online
       </h1>
