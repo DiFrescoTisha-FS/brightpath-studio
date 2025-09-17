@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './components/RootLayout';
 import HomePage from './components/pages/HomePage.tsx';
 import ContactPage from './components/pages/ContactPage';
+import AboutPage from './components/pages/AboutPage';
 import TermsPage from './components/pages/TermsPage';
 import PrivacyPage from './components/pages/PrivacyPage';
 import AboutPage from './components/pages/AboutPage';
@@ -12,6 +13,7 @@ import './index.css';
 const router = createBrowserRouter([
   {
     path: "/",
+
     element: <RootLayout />, // The layout is the main element
     children: [
       {
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
         element: <PrivacyPage />,
       },
     ],
+
   },
 ]);
 

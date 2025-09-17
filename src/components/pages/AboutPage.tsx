@@ -10,7 +10,7 @@ const AboutPage = () => {
     },
     {
       title: 'A Journey of Dedication and Achievement',
-      description: 'Graduating from Full Sail University was a defining moment in my journey. Combining creativity with technology led me to web development, and my dedication to the craft earned me the honor of class valedictorian.',
+      description: 'Graduating from Full Sail University was a defining moment in my journey. Combining creativity with technology led me to web development, and my dedication to the craft earned me the honor of class valedictorian
       imageUrl: '/images/lighthouse-gift.png',
       highlightColor: '#F2C94C',
     },
@@ -96,6 +96,7 @@ const AboutPage = () => {
         
         {/* The vertical timeline line */}
         <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-gold via-brightpath-blue to-transparent transform -translate-x-1/2 z-10"></div>
+
 
         <div className="container mx-auto space-y-16 relative z-20">
           {timelineEvents.map((event, index) => (
