@@ -96,7 +96,7 @@ const ContactPage: React.FC = () => {
                       Email
                     </h3>
                     <p className="font-lato text-stone">
-                      hello@brightpathstudio.com
+                      tishdifresco@brightpathstudio.com
                     </p>
                   </div>
                 </div>
