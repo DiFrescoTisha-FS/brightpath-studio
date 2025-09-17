@@ -1,14 +1,17 @@
-import React from 'react'
-import HomePage from './components/pages/HomePage';
+import { Outlet } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 function App() {
   return (
     <>
-      <HomePage />
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
