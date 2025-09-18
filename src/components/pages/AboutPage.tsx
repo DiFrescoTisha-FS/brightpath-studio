@@ -9,8 +9,8 @@ const AboutPage = () => {
       highlightColor: '#F2C94C',
     },
     {
-      title: 'A Journey of Dedication and Achievement',
-      description: 'Graduating from Full Sail University was a defining moment in my journey. Combining creativity with technology led me to web development, and my dedication to the craft earned me the honor of class valedictorian
+      title: 'The Lighthouse That Started It All',
+      description: 'At my graduation, one of my instructors gifted me a lighthouse, symbolizing guidance, resilience, and perseverance. It was a reminder that even in the darkest times, we can find our way forward. This symbol became the foundation for BrightPath Web Studio LLC, inspiring me to help businesses navigate the digital world with confidence and clarity.',
       imageUrl: '/images/lighthouse-gift.png',
       highlightColor: '#F2C94C',
     },
