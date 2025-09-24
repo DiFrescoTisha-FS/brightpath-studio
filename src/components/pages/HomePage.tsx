@@ -1,11 +1,23 @@
 import { Lightbulb, Compass, Star } from 'lucide-react';
 
 const HeroSection = () => (
-  <section 
-    className="bg-cover bg-center text-white min-h-screen flex items-center justify-center pt-20" 
-    style={{ backgroundImage: "linear-gradient(rgba(26, 34, 56, 0.7), rgba(26, 34, 56, 0.7)), url('/images/NEW LIGHTHOUSE BACKGROUND.jpeg')" }}
+<section className="relative text-white min-h-screen flex items-center justify-center overflow-hidden">
+  
+  {/* Video Background */}
+  <video 
+    autoPlay 
+    loop 
+    muted 
+    playsInline
+    className="absolute top-0 left-0 w-full h-full object-cover z-0"
   >
-    <div className="text-center max-w-4xl mx-auto px-4">
+    <source src="/videos/video-1.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  {/* Dark Overlay */}
+  <div className="absolute top-0 left-0 w-full h-full bg-midnight/60 z-10"></div>
+    <div className="relative z-20 text-center max-w-4xl mx-auto px-4">
       <h1 className="text-4xl md:text-6xl font-poppins font-bold mb-4">
         Guiding Your Business to Shine Bright Online
       </h1>

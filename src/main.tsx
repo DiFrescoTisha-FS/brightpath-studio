@@ -7,7 +7,6 @@ import ContactPage from './components/pages/ContactPage';
 import AboutPage from './components/pages/AboutPage';
 import TermsPage from './components/pages/TermsPage';
 import PrivacyPage from './components/pages/PrivacyPage';
-import AboutPage from './components/pages/AboutPage';
 import './index.css';
 
 const router = createBrowserRouter([
