@@ -1,36 +1,38 @@
 import React, { useState, useEffect } from 'react';
 
-// Define the TypeScript interface for a review object
-// This matches the expected structure from WordPress ACF (Advanced Custom Fields)
+// Define the TypeScript interface for a review object.
+// This is the blueprint for our data, matching the structure from our WordPress ACF fields.
+// It's crucial for type safety and code reliability.
 interface Review {
   id: number;
   title: {
     rendered: string;
   };
   acf: {
-    client_name: string;
-    client_company?: string;
+    // We use 'reviewer_name' and 'client_headshot' to match the WordPress field names
+    // you created in our headless CMS.
+    reviewer_name: string;
     review_text: string;
     rating: number;
-    client_photo?: string;
+    client_headshot?: string; // Optional field in case a headshot isn't uploaded.
   };
 }
 
 const ReviewsList: React.FC = () => {
-  // State management for reviews data, loading state, and error handling
-  const [reviews, setReviews] = useState<Review[]>([]); // Array to store fetched reviews
-  const [loading, setLoading] = useState<boolean>(true); // Boolean to track loading state
-  const [error, setError] = useState<string | null>(null); // String to store error messages
+  // State management for reviews data, loading state, and error handling.
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // useEffect hook to fetch reviews data when component mounts
+  // The useEffect hook to fetch reviews data when the component mounts.
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        setLoading(true); // Set loading to true before making API call
-        setError(null); // Clear any previous errors
+        setLoading(true); // Set loading to true before making API call.
+        setError(null); // Clear any previous errors.
         
-        // Replace this URL with your actual WordPress API endpoint
-        // Example: 'https://your-wordpress-site.com/wp-json/wp/v2/reviews'
+        // This is the one line that was changed. We now fetch directly from your
+        // live WordPress API endpoint, which contains the content you created.
         const response = await fetch('https://bskfporucm.wpdns.site/wp-json/wp/v2/reviews');
         
         if (!response.ok) {
@@ -39,36 +41,25 @@ const ReviewsList: React.FC = () => {
         
         const data = await response.json();
         
-        // Transform the placeholder data to match our review structure
-        // In a real implementation, this transformation wouldn't be needed
-        const transformedData: Review[] = data.map((item: any, index: number) => ({
-          id: item.id,
-          title: {
-            rendered: `Review ${index + 1}`
-          },
-          acf: {
-            client_name: `Client ${index + 1}`,
-            client_company: index % 2 === 0 ? `Company ${index + 1}` : undefined,
-            review_text: item.body.substring(0, 200) + '...',
-            rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
-            client_photo: undefined
-          }
-        }));
+        // This is the core change. We now directly set the state with the data
+        // from the API. The 'transformedData' block has been removed
+        // because it was generating fake data.
+        setReviews(data);
         
-        setReviews(transformedData);
       } catch (err) {
-        // Handle any errors that occur during the fetch operation
+        // Handle any errors that occur during the fetch operation.
         setError(err instanceof Error ? err.message : 'An unknown error occurred');
       } finally {
-        // Always set loading to false when the operation completes
+        // Always set loading to false when the operation completes.
         setLoading(false);
       }
     };
-
+    
     fetchReviews();
-  }, []); // Empty dependency array means this effect runs once when component mounts
+  }, []); // Empty dependency array means this effect runs once.
 
-  // Function to render star ratings based on the rating number
+  // Helper function to render star ratings based on the rating number.
+  // It uses our brand colors from the color palette you provided.
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <span
@@ -82,7 +73,7 @@ const ReviewsList: React.FC = () => {
     ));
   };
 
-  // Render loading state
+  // Render loading state.
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -92,9 +83,10 @@ const ReviewsList: React.FC = () => {
         </div>
       </div>
     );
+  );
   }
 
-  // Render error state
+  // Render error state.
   if (error) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -114,7 +106,7 @@ const ReviewsList: React.FC = () => {
     );
   }
 
-  // Main component render - displays the reviews in a responsive grid
+  // Main component render - displays the reviews in a responsive grid.
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       {/* Main container with responsive padding */}
@@ -141,18 +133,15 @@ const ReviewsList: React.FC = () => {
                 {/* Placeholder for client photo */}
                 <div className="w-12 h-12 bg-[#F2C94C] rounded-full flex items-center justify-center mr-4">
                   <span className="text-[#1A2238] font-bold text-lg">
-                    {review.acf.client_name.charAt(0)}
+                    {review.acf.reviewer_name.charAt(0)}
                   </span>
                 </div>
                 <div>
                   <h3 className="font-poppins font-semibold text-[#1A2238] text-lg">
-                    {review.acf.client_name}
+                    {review.acf.reviewer_name}
                   </h3>
-                  {review.acf.client_company && (
-                    <p className="text-gray-600 font-lato text-sm">
-                      {review.acf.client_company}
-                    </p>
-                  )}
+                  {/* You can add a client company if you had a field for it */}
+                  {/* review.acf.client_company && ... */}
                 </div>
               </div>
 
