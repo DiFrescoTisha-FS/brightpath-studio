@@ -106,78 +106,75 @@ const ReviewsList: React.FC = () => {
   }
 
   // Main component render - displays the reviews in a responsive grid.
-  return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      {/* Main container with responsive padding */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-[#1A2238] mb-4">
-            Client Reviews
-          </h2>
-          <p className="text-lg text-gray-600 font-lato max-w-2xl mx-auto">
-            See what our clients have to say about working with BrightPath Web Studio
-          </p>
-        </div>
+ return (
+  <div className="min-h-screen bg-gray-50 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-[#1A2238] mb-4">
+          Client Reviews
+        </h2>
+        <p className="text-lg text-gray-600 font-lato max-w-2xl mx-auto">
+          See what our clients have to say about working with BrightPath Web Studio
+        </p>
+      </div>
 
-        {/* Reviews grid - responsive layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.map((review) => (
-            <div
-              key={review.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6"
-            >
-              {/* Review card header with client info */}
-              <div className="flex items-center mb-4">
-                {/* Placeholder for client photo */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reviews.map((review) => (
+          <div
+            key={review.id}
+            className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6"
+          >
+            <div className="flex items-center mb-4">
+              {/* Display the client photo if available */}
+              {review.acf.client_headshot && (
+                <img 
+                  src={review.acf.client_headshot} 
+                  alt={review.acf.reviewer_name}
+                  className="w-12 h-12 rounded-full mr-4 object-cover"
+                />
+              )}
+              {!review.acf.client_headshot && (
                 <div className="w-12 h-12 bg-[#F2C94C] rounded-full flex items-center justify-center mr-4">
                   <span className="text-[#1A2238] font-bold text-lg">
                     {review.acf.reviewer_name.charAt(0)}
                   </span>
                 </div>
-                <div>
-                  <h3 className="font-poppins font-semibold text-[#1A2238] text-lg">
-                    {review.acf.reviewer_name}
-                  </h3>
-                  {/* You can add a client company if you had a field for it */}
-                  {/* review.acf.client_company && ... */}
-                </div>
-              </div>
-
-              {/* Star rating display */}
-              <div className="flex items-center mb-3">
-                {renderStars(review.acf.rating)}
-                <span className="ml-2 text-gray-600 font-lato text-sm">
-                  ({review.acf.rating}/5)
-                </span>
-              </div>
-
-              {/* Review text content */}
-              <p className="text-gray-700 font-lato leading-relaxed mb-4">
-                "{review.acf.review_text}"
-              </p>
-
-              {/* Review footer with subtle styling */}
-              <div className="border-t border-gray-100 pt-3">
-                <p className="text-gray-500 font-lato text-xs">
-                  Verified Client Review
-                </p>
+              )}
+              <div>
+                <h3 className="font-poppins font-semibold text-[#1A2238] text-lg">
+                  {review.acf.reviewer_name}
+                </h3>
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* Empty state if no reviews are found */}
-        {reviews.length === 0 && !loading && !error && (
-          <div className="text-center py-12">
-            <p className="text-gray-600 font-lato text-lg">
-              No reviews available at this time.
+            <div className="flex items-center mb-3">
+              {renderStars(review.acf.rating)}
+              <span className="ml-2 text-gray-600 font-lato text-sm">
+                ({review.acf.rating}/5)
+              </span>
+            </div>
+
+            <p className="text-gray-700 font-lato leading-relaxed mb-4">
+              "{review.acf.review_text}"
+            </p>
+            
+            {/* Display the review date */}
+            <p className="text-gray-500 font-lato text-xs">
+              Reviewed on: {new Date(review.acf.review_date).toLocaleDateString()}
             </p>
           </div>
-        )}
+        ))}
       </div>
+
+      {reviews.length === 0 && !loading && !error && (
+        <div className="text-center py-12">
+          <p className="text-gray-600 font-lato text-lg">
+            No reviews available at this time.
+          </p>
+        </div>
+      )}
     </div>
-    );
-};
+  </div>
+);
 
 export default ReviewsList;
