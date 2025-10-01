@@ -83,7 +83,6 @@ const ReviewsList: React.FC = () => {
         </div>
       </div>
     );
-  );
   }
 
   // Render error state.
