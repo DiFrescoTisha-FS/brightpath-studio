@@ -31,7 +31,7 @@ const ReviewsList: React.FC = () => {
         
         // Replace this URL with your actual WordPress API endpoint
         // Example: 'https://your-wordpress-site.com/wp-json/wp/v2/reviews'
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6');
+        const response = await fetch('https://bskfporucm.wpdns.site/wp-json/wp/v2/reviews');
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
