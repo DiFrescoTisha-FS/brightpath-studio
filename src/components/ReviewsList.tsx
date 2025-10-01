@@ -176,5 +176,6 @@ const ReviewsList: React.FC = () => {
     </div>
   </div>
 );
+}
 
 export default ReviewsList;
