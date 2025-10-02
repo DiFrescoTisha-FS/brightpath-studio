@@ -40,6 +40,10 @@ const router = createBrowserRouter([
         path: "privacy-policy",
         element: <PrivacyPage />,
       },
+      {
+        path: "reviews",
+        element: <ReviewsList />,
+      },
     ],
 
   },
