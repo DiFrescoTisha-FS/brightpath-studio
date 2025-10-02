@@ -8,6 +8,7 @@ import AboutPage from './components/pages/AboutPage';
 import TermsPage from './components/pages/TermsPage';
 import PrivacyPage from './components/pages/PrivacyPage';
 import TestimonialsPage from './components/pages/TestimonialsPage';
+import ReviewsList from './components/ReviewsList'
 import './index.css';
 
 const router = createBrowserRouter([
