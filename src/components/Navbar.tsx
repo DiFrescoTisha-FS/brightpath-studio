@@ -12,7 +12,8 @@ const Navbar = () => (
             <div className="ml-10 flex items-baseline space-x-4">
                 <Link to="/" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato   transition-colors">Home</Link>
                 <a href="#" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato   transition-colors">Services</a>
-                <Link to="/about" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato     transition-colors">About</Link>
+            <Link to="/about" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato     transition-colors">About</Link>
+            <Link to="/testimonial" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato     transition-colors">Testimonials</Link>
                 <a href="#" className="text-stone hover:text-white px-3 py-2 rounded-md text-sm font-lato   transition-colors">Portfolio</a>
                 <Link to="/contact" className="bg-gold text-midnight font-bold font-lato px-4 py-2 rounded-md text-sm hover:bg-yellow-400 transition-colors">Contact Us</Link>
           </div>

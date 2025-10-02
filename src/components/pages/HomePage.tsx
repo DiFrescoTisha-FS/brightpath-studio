@@ -1,4 +1,5 @@
 import { Lightbulb, Compass, Star } from 'lucide-react';
+import ReviewsList from '../ReviewsList';
 
 const HeroSection = () => (
 <section className="relative text-white min-h-screen flex items-center justify-center overflow-hidden">
@@ -73,14 +74,17 @@ const ServicesSection = () => {
 const BrandStorySection = () => (
   <section className="bg-midnight py-20">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div>
-        <div className="w-full h-80 bg-stone/10 rounded-lg flex items-center justify-center border border-stone/20">
-          <div className="text-center">
-            <Lightbulb className="h-16 w-16 text-gold mx-auto mb-4" />
-            <p className="text-stone font-lato">Minimalist Lighthouse Graphic</p>
-          </div>
-        </div>
-      </div>
+    <div>
+  <div className="w-full h-80 bg-stone/10 rounded-lg flex items-center justify-center border border-stone/20">
+    <div className="text-center">
+      <img
+        src="/images/lh-5.jpeg"
+        alt="Lighthouse Graphic"
+        className="h-auto w-full mx-auto mb-4"
+      />
+    </div>
+  </div>
+</div>
       <div>
         <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">A Beacon in the Digital Fog</h2>
         <p className="font-lato text-stone leading-relaxed text-lg mb-6">
@@ -118,6 +122,7 @@ const HomePage = () => {
       <main>
         <HeroSection />
         <ServicesSection />
+        <ReviewsList />
         <BrandStorySection />
       </main>
       <Footer />
