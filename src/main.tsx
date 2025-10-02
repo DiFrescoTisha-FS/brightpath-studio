@@ -7,7 +7,7 @@ import ContactPage from './components/pages/ContactPage';
 import AboutPage from './components/pages/AboutPage';
 import TermsPage from './components/pages/TermsPage';
 import PrivacyPage from './components/pages/PrivacyPage';
-import ReviewsList from './components/ReviewsList';
+import TestimonialsPage from './components/pages/TestimonialsPage';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutPage />,
+      },
+      {
+      path: "testimonial",
+        element: <TestimonialsPage />,
       },
       {
         path: "contact",

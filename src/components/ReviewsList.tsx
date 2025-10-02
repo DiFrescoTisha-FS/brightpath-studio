@@ -1,79 +1,52 @@
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import ReviewCard from './ReviewCard';
 
-// Define the TypeScript interface for a review object.
-// This is the blueprint for our data, matching the structure from our WordPress ACF fields.
-// It's crucial for type safety and code reliability.
+// Define the TypeScript interface for our review data.
 interface Review {
   id: number;
   title: {
     rendered: string;
   };
   acf: {
-    // We use 'reviewer_name' and 'client_headshot' to match the WordPress field names
-    // you created in our headless CMS.
     reviewer_name: string;
     review_text: string;
     rating: number;
-    client_headshot?: string; // Optional field in case a headshot isn't uploaded.
+    client_headshot?: string;
+    review_date: string;
   };
 }
 
 const ReviewsList: React.FC = () => {
-  // State management for reviews data, loading state, and error handling.
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // The useEffect hook to fetch reviews data when the component mounts.
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        setLoading(true); // Set loading to true before making API call.
-        setError(null); // Clear any previous errors.
+        setLoading(true);
+        setError(null);
         
-        // This is the one line that was changed. We now fetch directly from your
-        // live WordPress API endpoint, which contains the content you created.
-        const response = await fetch('https://bskfporucm.wpdns.site/wp-json/wp/v2/reviews');
+        const response = await fetch('https://bskfporucm.wpdns.site/wp-json/wp/v2/reviews?_embed');
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
-        
-        // This is the core change. We now directly set the state with the data
-        // from the API. The 'transformedData' block has been removed
-        // because it was generating fake data.
         setReviews(data);
         
       } catch (err) {
-        // Handle any errors that occur during the fetch operation.
         setError(err instanceof Error ? err.message : 'An unknown error occurred');
       } finally {
-        // Always set loading to false when the operation completes.
         setLoading(false);
       }
     };
     
     fetchReviews();
-  }, []); // Empty dependency array means this effect runs once.
+  }, []);
 
-  // Helper function to render star ratings based on the rating number.
-  // It uses our brand colors from the color palette you provided.
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <span
-        key={index}
-        className={`text-lg ${
-          index < rating ? 'text-[#F2C94C]' : 'text-gray-300'
-        }`}
-      >
-        ★
-      </span>
-    ));
-  };
-
-  // Render loading state.
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -85,7 +58,6 @@ const ReviewsList: React.FC = () => {
     );
   }
 
-  // Render error state.
   if (error) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -105,77 +77,39 @@ const ReviewsList: React.FC = () => {
     );
   }
 
-  // Main component render - displays the reviews in a responsive grid.
- return (
-  <div className="min-h-screen bg-gray-50 py-12">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-[#1A2238] mb-4">
-          Client Reviews
-        </h2>
-        <p className="text-lg text-gray-600 font-lato max-w-2xl mx-auto">
-          See what our clients have to say about working with BrightPath Web Studio
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {reviews.map((review) => (
-          <div
-            key={review.id}
-            className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6"
-          >
-            <div className="flex items-center mb-4">
-              {/* Display the client photo if available */}
-              {review.acf.client_headshot && (
-                <img 
-                  src={review.acf.client_headshot} 
-                  alt={review.acf.reviewer_name}
-                  className="w-12 h-12 rounded-full mr-4 object-cover"
-                />
-              )}
-              {!review.acf.client_headshot && (
-                <div className="w-12 h-12 bg-[#F2C94C] rounded-full flex items-center justify-center mr-4">
-                  <span className="text-[#1A2238] font-bold text-lg">
-                    {review.acf.reviewer_name.charAt(0)}
-                  </span>
-                </div>
-              )}
-              <div>
-                <h3 className="font-poppins font-semibold text-[#1A2238] text-lg">
-                  {review.acf.reviewer_name}
-                </h3>
-              </div>
-            </div>
-
-            <div className="flex items-center mb-3">
-              {renderStars(review.acf.rating)}
-              <span className="ml-2 text-gray-600 font-lato text-sm">
-                ({review.acf.rating}/5)
-              </span>
-            </div>
-
-            <p className="text-gray-700 font-lato leading-relaxed mb-4">
-              "{review.acf.review_text}"
-            </p>
-            
-            {/* Display the review date */}
-            <p className="text-gray-500 font-lato text-xs">
-              Reviewed on: {new Date(review.acf.review_date).toLocaleDateString()}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      {reviews.length === 0 && !loading && !error && (
-        <div className="text-center py-12">
-          <p className="text-gray-600 font-lato text-lg">
-            No reviews available at this time.
+  return (
+    <div className="min-h-screen bg-reviews-gradient py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-[#1A2238] mb-4">
+            Client Reviews
+          </h2>
+          <p className="text-lg text-gray-600 font-lato max-w-2xl mx-auto">
+            See what our clients have to say about working with BrightPath Web Studio
           </p>
         </div>
-      )}
+        
+        <AnimatePresence>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {reviews.map((review) => (
+              <ReviewCard
+                key={review.id}
+                review={review}
+              />
+            ))}
+          </div>
+        </AnimatePresence>
+
+        {reviews.length === 0 && !loading && !error && (
+          <div className="text-center py-12">
+            <p className="text-gray-600 font-lato text-lg">
+              No reviews available at this time.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-);
-}
+  );
+};
 
 export default ReviewsList;
