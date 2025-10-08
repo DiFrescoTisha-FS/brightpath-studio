@@ -36,4 +36,4 @@ jobs:
 
       # Step 6: Deploy with rsync
       - name: Deploy with rsync
-        run: rsync -avz --delete dist/ your-server-user@your-server-ip:/var/www/html/wp-content/themes/twentytwentyfive/
+        run: rsync -avz --delete dist/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/html/wp-content/themes/twentytwentyfive/
