@@ -28,13 +28,12 @@ jobs:
       - name: Build React App
         run: npm run build
 
-      # Step 5: (New Step) Configure SSH and deploy with rsync
+      # Step 5: (New Step) Configure SSH Agent
+      - name: Setup SSH Agent
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Step 6: Deploy with rsync
       - name: Deploy with rsync
-        uses: easingthemes/ssh-deploy@v2.1.5
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-avz --delete"
-          SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.SERVER_IP }}
-          REMOTE_USER: ${{ secrets.SERVER_USER }}
-          TARGET: "/var/www/html/wp-content/themes/your-theme-name/"
+        run: rsync -avz --delete dist/ ubuntu@${{ secrets.SERVER_IP }}:/var/www/html/wp-content/themes/twentytwentyfive/
