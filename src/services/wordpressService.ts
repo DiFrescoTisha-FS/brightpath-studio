@@ -8,6 +8,8 @@ import { WORDPRESS_API_URL } from '../config/api'; // Assuming you have a config
 export interface FlipCardDetails {
   subheading: string;
   main_heading: string;
+  back_card_title: string;
+  back_card_button_text: string;
   bullet_points: { point_text: string }[];
   icon: {
     url: string;

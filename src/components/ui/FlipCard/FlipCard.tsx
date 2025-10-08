@@ -4,6 +4,8 @@ import './FlipCard.css';
 interface FlipCardProps {
   mainHeading: string;
   subheading: string;
+  backCardTitle: string;
+  backCardButtonText: string;
   iconUrl: string;
   iconAlt: string;
   bulletPoints: string[];
@@ -12,6 +14,8 @@ interface FlipCardProps {
 const FlipCard: React.FC<FlipCardProps> = ({
   mainHeading,
   subheading,
+  backCardTitle,
+  backCardButtonText,
   iconUrl,
   iconAlt,
   bulletPoints,
@@ -49,18 +53,21 @@ const FlipCard: React.FC<FlipCardProps> = ({
         </div>
 
         {/* BACK SIDE OF CARD */}
-        <div className="flip-card-back absolute w-full h-full backface-hidden bg-gradient-to-br from-slate-700 to-slate-800 rounded-xl shadow-lg p-8 flex flex-col justify-center text-white rotate-y-180">
-          {/* Display the bullet points as an unordered list */}
-          <ul className="space-y-3">
-            {bulletPoints.map((point, index) => (
-              <li key={index} className="flex items-start">
-                {/* Custom bullet point using a checkmark icon */}
-                <span className="text-blue-400 mr-3 mt-1 flex-shrink-0">✓</span>
-                <span className="text-sm leading-relaxed">{point}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+{/* BACK SIDE OF CARD */}
+<div className="flip-card-back absolute w-full h-full backface-hidden bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl shadow-lg p-8 flex flex-col justify-center text-black rotate-y-180">
+  <h3 className="text-xl font-bold text-center mb-4">{backCardTitle}</h3>
+  {/* Display the bullet points as an unordered list */}
+  <ul className="space-y-3 list-disc list-inside">
+    {bulletPoints.map((point, index) => (
+      <li key={index} className="text-sm leading-relaxed">{point}</li>
+    ))}
+  </ul>
+  <div className="mt-8 text-center">
+    <button className="bg-white text-black font-bold py-2 px-6 rounded-full transition-all duration-300 ease-in-out hover:bg-slate-200">
+      {backCardButtonText}
+    </button>
+  </div>
+</div>
       </div>
     </div>
   );

@@ -111,6 +111,8 @@ const OurProcessSection: React.FC = () => {
                     <FlipCard
                       mainHeading={phase.acf.main_heading}
                       subheading={phase.acf.subheading}
+                      backCardTitle={phase.acf.back_card_title}
+                      backCardButtonText={phase.acf.back_card_button_text} 
                       iconUrl={phase.acf.icon?.url || ''}
                       iconAlt={phase.acf.icon?.alt || phase.acf.subheading}
                       bulletPoints={phase.acf.bullet_points.map((point) => point.point_text)}
