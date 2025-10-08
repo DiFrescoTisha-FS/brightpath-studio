@@ -1,29 +1,29 @@
-import { Lightbulb, Compass, Star } from 'lucide-react';
-import ReviewsList from '../ReviewsList';
+import { Lightbulb, Compass, Star } from "lucide-react";
+import ReviewsList from "../ui/ReviewsList";
 
 const HeroSection = () => (
-<section className="relative text-white min-h-screen flex items-center justify-center overflow-hidden">
-  
-  {/* Video Background */}
-  <video 
-    autoPlay 
-    loop 
-    muted 
-    playsInline
-    className="absolute top-0 left-0 w-full h-full object-cover z-0"
-  >
-    <source src="/videos/video-1.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <section className="relative text-white min-h-screen flex items-center justify-center overflow-hidden">
+    {/* Video Background */}
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="absolute top-0 left-0 w-full h-full object-cover z-0"
+    >
+      <source src="/videos/video-1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
-  {/* Dark Overlay */}
-  <div className="absolute top-0 left-0 w-full h-full bg-midnight/60 z-10"></div>
+    {/* Dark Overlay */}
+    <div className="absolute top-0 left-0 w-full h-full bg-midnight/60 z-10"></div>
     <div className="relative z-20 text-center max-w-4xl mx-auto px-4">
       <h1 className="text-4xl md:text-6xl font-poppins font-bold mb-4">
         Guiding Your Business to Shine Bright Online
       </h1>
       <p className="text-lg md:text-xl text-stone font-lato mb-8">
-        We are the beacon in the digital fog, crafting brilliant web experiences that navigate your brand to success.
+        We are the beacon in the digital fog, crafting brilliant web experiences
+        that navigate your brand to success.
       </p>
       <button className="bg-gold text-midnight font-bold font-lato py-3 px-8 rounded-full text-lg hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
         Begin Your Journey
@@ -34,34 +34,42 @@ const HeroSection = () => (
 
 const ServicesSection = () => {
   const services = [
-    { 
-      title: 'Web Design & Development', 
-      description: 'Creating stunning, high-performance websites tailored to your brand.',
-      icon: <Compass className="h-8 w-8 text-gold mb-4" />
+    {
+      title: "Web Design & Development",
+      description:
+        "Creating stunning, high-performance websites tailored to your brand.",
+      icon: <Compass className="h-8 w-8 text-gold mb-4" />,
     },
-    { 
-      title: 'Digital Strategy', 
-      description: 'Crafting data-driven strategies to illuminate your path to growth.',
-      icon: <Lightbulb className="h-8 w-8 text-gold mb-4" />
+    {
+      title: "Digital Strategy",
+      description:
+        "Crafting data-driven strategies to illuminate your path to growth.",
+      icon: <Lightbulb className="h-8 w-8 text-gold mb-4" />,
     },
-    { 
-      title: 'Brand Identity', 
-      description: 'Building memorable brands that shine bright and stand out from the crowd.',
-      icon: <Star className="h-8 w-8 text-gold mb-4" />
-    }
+    {
+      title: "Brand Identity",
+      description:
+        "Building memorable brands that shine bright and stand out from the crowd.",
+      icon: <Star className="h-8 w-8 text-gold mb-4" />,
+    },
   ];
-  
+
   return (
     <section className="bg-stone py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-midnight mb-12">Our Services</h2>
+        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-midnight mb-12">
+          Our Services
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="bg-midnight p-8 rounded-lg shadow-xl text-white hover:transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-              <div className="flex justify-center">
-                {service.icon}
-              </div>
-              <h3 className="text-2xl font-poppins font-semibold text-gold mb-4">{service.title}</h3>
+            <div
+              key={index}
+              className="bg-midnight p-8 rounded-lg shadow-xl text-white hover:transform hover:scale-105 transition-all duration-300 hover:shadow-2xl"
+            >
+              <div className="flex justify-center">{service.icon}</div>
+              <h3 className="text-2xl font-poppins font-semibold text-gold mb-4">
+                {service.title}
+              </h3>
               <p className="font-lato text-stone">{service.description}</p>
             </div>
           ))}
@@ -74,25 +82,32 @@ const ServicesSection = () => {
 const BrandStorySection = () => (
   <section className="bg-midnight py-20">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-    <div>
-  <div className="w-full h-80 bg-stone/10 rounded-lg flex items-center justify-center border border-stone/20">
-    <div className="text-center">
-      <img
-        src="/images/lh-5.jpeg"
-        alt="Lighthouse Graphic"
-        className="h-auto w-full mx-auto mb-4"
-      />
-    </div>
-  </div>
-</div>
       <div>
-        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">A Beacon in the Digital Fog</h2>
+        <div className="w-full h-80 bg-stone/10 rounded-lg flex items-center justify-center border border-stone/20">
+          <div className="text-center">
+            <img
+              src="/images/lh-5.jpeg"
+              alt="Lighthouse Graphic"
+              className="h-auto w-full mx-auto mb-4"
+            />
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">
+          A Beacon in the Digital Fog
+        </h2>
         <p className="font-lato text-stone leading-relaxed text-lg mb-6">
-          In a crowded online world, clarity is everything. Like a lighthouse on a rocky coast, BrightPath provides unwavering guidance. We cut through the complexity with clear strategy and brilliant design, ensuring your business safely reaches its destination and shines for all to see.
+          In a crowded online world, clarity is everything. Like a lighthouse on
+          a rocky coast, BrightPath provides unwavering guidance. We cut through
+          the complexity with clear strategy and brilliant design, ensuring your
+          business safely reaches its destination and shines for all to see.
         </p>
         <div className="flex items-center space-x-4">
           <div className="w-16 h-1 bg-gold rounded-full"></div>
-          <span className="text-gold font-lato font-bold">Illuminating Success</span>
+          <span className="text-gold font-lato font-bold">
+            Illuminating Success
+          </span>
         </div>
       </div>
     </div>
@@ -104,12 +119,21 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-stone font-lato">
       <div className="flex justify-center items-center space-x-2 mb-4">
         <Lightbulb className="h-6 w-6 text-gold" />
-        <span className="text-white font-poppins font-bold text-lg">BrightPath Web Studio</span>
+        <span className="text-white font-poppins font-bold text-lg">
+          BrightPath Web Studio
+        </span>
       </div>
-      <p>&copy; {new Date().getFullYear()} BrightPath Web Studio LLC. All Rights Reserved.</p>
+      <p>
+        &copy; {new Date().getFullYear()} BrightPath Web Studio LLC. All Rights
+        Reserved.
+      </p>
       <div className="mt-4 flex justify-center space-x-6">
-        <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
-        <a href="#" className="hover:text-gold transition-colors">Terms of Service</a>
+        <a href="#" className="hover:text-gold transition-colors">
+          Privacy Policy
+        </a>
+        <a href="#" className="hover:text-gold transition-colors">
+          Terms of Service
+        </a>
       </div>
     </div>
   </footer>
@@ -118,7 +142,6 @@ const Footer = () => (
 const HomePage = () => {
   return (
     <div className="min-h-screen">
-
       <main>
         <HeroSection />
         <ServicesSection />

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import ReviewCard from './ReviewCard';
+import React, { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import ReviewCard from "./ReviewCard";
 
 // Define the TypeScript interface for our review data.
 interface Review {
@@ -27,29 +27,32 @@ const ReviewsList: React.FC = () => {
       try {
         setLoading(true);
         setError(null);
-        
-        const response = await fetch('https://bskfporucm.wpdns.site/wp-json/wp/v2/reviews?_embed');
-        
+
+        const response = await fetch(
+          "https://bskfporucm.wpdns.site/wp-json/wp/v2/reviews?_embed"
+        );
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const data = await response.json();
         setReviews(data);
-        
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An unknown error occurred');
+        setError(
+          err instanceof Error ? err.message : "An unknown error occurred"
+        );
       } finally {
         setLoading(false);
       }
     };
-    
+
     fetchReviews();
   }, []);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#F2C94C] mx-auto mb-4"></div>
           <p className="text-[#1A2238] font-lato text-lg">Loading reviews...</p>
@@ -60,7 +63,7 @@ const ReviewsList: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
             <strong className="font-bold">Error: </strong>
@@ -78,24 +81,22 @@ const ReviewsList: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-reviews-gradient py-12">
+    <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-[#1A2238] mb-4">
             Client Reviews
           </h2>
           <p className="text-lg text-gray-600 font-lato max-w-2xl mx-auto">
-            See what our clients have to say about working with BrightPath Web Studio
+            See what our clients have to say about working with BrightPath Web
+            Studio
           </p>
         </div>
-        
+
         <AnimatePresence>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {reviews.map((review) => (
-              <ReviewCard
-                key={review.id}
-                review={review}
-              />
+              <ReviewCard key={review.id} review={review} />
             ))}
           </div>
         </AnimatePresence>

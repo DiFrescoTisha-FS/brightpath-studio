@@ -1,0 +1,84 @@
+
+text/css gallery.css ( UTF-8 Unicode text )
+/* ==========================================
+   Gallery Page Base Styles — page-id-278617
+   Mobile-First Approach
+========================================== */
+
+/* === Logo in Header === */
+.page-id-278617 .gallery-logo {
+  position: absolute;
+  top: 20px;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 120px;
+}
+
+/* Sticky Header Logo Position Reset */
+.page-id-278617 .et_pb_section_0_tb_header.et-fixed-header .gallery-logo {
+  position: relative;
+  top: 0;
+  transform: none;
+}
+
+/* === Hero Section === */
+.page-id-278617 .gallery-hero-section {
+  padding-top: 160px;
+  padding-right: 16px;
+  padding-left: 16px;
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* === Header Adjustments for Mobile Fixed Header === */
+.et_fixed_header #main-header,
+.et-fixed-header #main-header {
+  height: 80px;
+  padding: 0;
+}
+
+/* === Remove Extra Padding/Margins From Specific Sections === */
+.page-id-278617 .et_pb_section:nth-of-type(2),
+.page-id-278617 .et_pb_section:nth-of-type(3),
+.page-id-278617 .et_pb_section:nth-of-type(4),
+.page-id-278617 .et_pb_section .et_pb_map,
+.page-id-278617 #main-footer {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/****************************************************************************/
+/****************************************************************************/
+@media only screen and (max-width: 417px) {
+  .et_pb_button.et_pb_button_2.secondary-button.et-lb-btn-1 {
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+}
+
+/****************************************************************************/
+/****************************************************************************/
+@media (min-width: 768px) {
+  /* Button Refinement for Tablet+ */
+  .page-id-278617 .gallery-hero-section {
+    padding-top: 120px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  /* Optional: Increase heading size */
+  .page-id-278617 .gallery-hero-section h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  
+}
