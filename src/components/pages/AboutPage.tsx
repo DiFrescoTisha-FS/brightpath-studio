@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import OurProcessSection from '../sections/OurProcessSection';
 
 const AboutPage = () => {
   const timelineEvents = [
@@ -156,6 +157,7 @@ const AboutPage = () => {
         {/* Bottom fade effect */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent"></div>
       </section>
+      <OurProcessSection />
     </div>
   );
 };

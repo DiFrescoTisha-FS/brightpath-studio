@@ -1,6 +1,7 @@
-import { Outlet } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/ui/Navbar";
+import Footer from "./components/ui/Footer";
+import OurProcessSection from './components/sections';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <main>
         <Outlet />
+        <OurProcessSection />
       </main>
       <Footer />
     </>

@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RootLayout from './components/RootLayout';
-import HomePage from './components/pages/HomePage.tsx';
-import ContactPage from './components/pages/ContactPage';
-import AboutPage from './components/pages/AboutPage';
-import TermsPage from './components/pages/TermsPage';
-import PrivacyPage from './components/pages/PrivacyPage';
-import TestimonialsPage from './components/pages/TestimonialsPage';
-import ReviewsList from './components/ReviewsList'
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import RootLayout from "./components/ui/RootLayout.tsx";
+import HomePage from "./components/pages/HomePage.tsx";
+import ContactPage from "./components/pages/ContactPage";
+import AboutPage from "./components/pages/AboutPage";
+import TermsPage from "./components/pages/TermsPage";
+import PrivacyPage from "./components/pages/PrivacyPage";
+import TestimonialsPage from "./components/pages/TestimonialsPage";
+import ReviewsList from "./components/ui/ReviewsList.tsx";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element: <AboutPage />,
       },
       {
-      path: "testimonial",
+        path: "testimonial",
         element: <TestimonialsPage />,
       },
       {
@@ -46,12 +46,11 @@ const router = createBrowserRouter([
         element: <ReviewsList />,
       },
     ],
-
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
