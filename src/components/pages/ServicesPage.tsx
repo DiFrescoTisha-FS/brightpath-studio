@@ -1,0 +1,92 @@
+// src/pages/ServicesPage.tsx
+
+import React, { useState, useEffect } from 'react';
+import { FlipCardContainer } from '../ui/FlipCard';
+import { getFlipCardPhases } from '../../../backend/services/api.service';
+import { motion } from 'framer-motion';
+import { PhaseCard } from '../../types/phaseCard'; 
+
+const ServicesPage: React.FC = () => {
+  const [cards, setCards] = useState<PhaseCard[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const data: PhaseCard[] = await getFlipCardPhases();
+        setCards(data);
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError('An unexpected error occurred.');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCards();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center py-10 text-white bg-slate-900 min-h-screen">
+        Loading our process...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-10 text-red-500 bg-slate-900 min-h-screen">
+        Error: {error}
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="py-20 px-8 min-h-screen relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/images/brightpath-bg.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      {/* Semi-transparent overlay for readability */}
+      <div className="absolute inset-0 bg-slate-900 opacity-80 z-0"></div>
+
+      <motion.div 
+        className="container mx-auto relative z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+          {/* Left Column: Text Content */}
+          <div className="text-white">
+            <h2 className="text-4xl font-bold mb-4">Our Process</h2>
+            <p className="text-lg mb-6">
+              At BrightPath Web Studio, every website we create follows a clear, purposeful path—from the first spark of an idea to a seamless, fully launched experience.
+            </p>
+            <p className="text-lg">
+              Our six-phase approach ensures each project is thoughtfully planned, beautifully designed, and built to perform.
+            </p>
+            <button className="mt-8 bg-yellow-500 text-black font-bold py-3 px-6 rounded-full hover:bg-yellow-400 transition-colors">
+              Start Your Project
+            </button>
+          </div>
+
+          {/* Right two columns for the cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:col-span-2">
+            <FlipCardContainer cards={cards} />
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+export default ServicesPage;
