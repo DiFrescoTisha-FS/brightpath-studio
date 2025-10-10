@@ -9,6 +9,7 @@ import TermsPage from "./components/pages/TermsPage";
 import PrivacyPage from "./components/pages/PrivacyPage";
 import TestimonialsPage from "./components/pages/TestimonialsPage";
 import ReviewsList from "./components/ui/ReviewsList.tsx";
+import ServicesPage from './components/pages/ServicesPage.tsx';
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutPage />,
+      },
+      {
+        path: 'services', // The new path for the services page
+        element: <ServicesPage />,
       },
       {
         path: "testimonial",

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import OurProcessSection from '../sections/OurProcessSection';
 
 const AboutPage = () => {
   const timelineEvents = [
@@ -10,7 +9,7 @@ const AboutPage = () => {
       highlightColor: '#F2C94C',
     },
     {
-      title: 'The Lighthouse That Started It All',
+      title: 'The Lighthouse That Started It, All',
       description: 'At my graduation, one of my instructors gifted me a lighthouse, symbolizing guidance, resilience, and perseverance. It was a reminder that even in the darkest times, we can find our way forward. This symbol became the foundation for BrightPath Web Studio LLC, inspiring me to help businesses navigate the digital world with confidence and clarity.',
       imageUrl: '/images/lighthouse-gift.png',
       highlightColor: '#F2C94C',
@@ -77,28 +76,26 @@ const AboutPage = () => {
         </div>
       </motion.section>
 
-{/* --- TIMELINE SECTION --- */}
-  <section 
-      className="relative py-20 px-8 bg-cover bg-center bg-fixed">
+      {/* --- TIMELINE SECTION --- */}
+      <section 
+          className="relative py-20 px-8 bg-cover bg-center bg-fixed">
         <video 
           autoPlay 
           loop 
           muted 
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
-  >
-    <source src="/videos/timeline-video.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+        >
+          <source src="/videos/timeline-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-  {/* Dark Overlay for better text readability */}
-  <div className="absolute inset-0 bg-midnight/60 z-10"></div>
-
+        {/* Dark Overlay for better text readability */}
+        <div className="absolute inset-0 bg-midnight/60 z-10"></div>
         
         {/* The vertical timeline line */}
         <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-gold via-brightpath-blue to-transparent transform -translate-x-1/2 z-10"></div>
-
-
+        
         <div className="container mx-auto space-y-16 relative z-20">
           {timelineEvents.map((event, index) => (
             <motion.div
@@ -122,7 +119,6 @@ const AboutPage = () => {
                              relative flex flex-col items-center"
                   
                   style={{
-                    // Gradient border effect
                     background: `linear-gradient(#1A2238, #1A2238) padding-box, 
                                  linear-gradient(to right, #F2C94C, #1A2238, #F2C94C) border-box`,
                     border: '2px solid transparent',
@@ -153,11 +149,7 @@ const AboutPage = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom fade effect */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent"></div>
       </section>
-      <OurProcessSection />
     </div>
   );
 };
