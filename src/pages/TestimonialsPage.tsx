@@ -1,5 +1,5 @@
-import ReviewsList from "../ui/ReviewsList";
-import PhaseCards from "../ui/PhaseCards";
+import ReviewsList from "../components/ui/ReviewsList";
+import PhaseCards from "../components/ui/PhaseCards";
 
 const TestimonialsPage = () => {
   return (

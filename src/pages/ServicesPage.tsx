@@ -1,10 +1,10 @@
 // src/pages/ServicesPage.tsx
 
-import React, { useState, useEffect } from 'react';
-import { FlipCardContainer } from '../ui/FlipCard';
-import { getFlipCardPhases } from '../../../backend/services/api.service';
-import { motion } from 'framer-motion';
-import { PhaseCard } from '../../types/phaseCard'; 
+import React, { useState, useEffect } from "react";
+import { FlipCardContainer } from "../components/ui/FlipCard";
+import { getFlipCardPhases } from "../../backend/services/api.service";
+import { motion } from "framer-motion";
+import { PhaseCard } from "../types/phaseCard";
 
 const ServicesPage: React.FC = () => {
   const [cards, setCards] = useState<PhaseCard[]>([]);
@@ -20,7 +20,7 @@ const ServicesPage: React.FC = () => {
         if (error instanceof Error) {
           setError(error.message);
         } else {
-          setError('An unexpected error occurred.');
+          setError("An unexpected error occurred.");
         }
       } finally {
         setLoading(false);
@@ -50,15 +50,15 @@ const ServicesPage: React.FC = () => {
       className="py-20 px-8 min-h-screen relative overflow-hidden"
       style={{
         backgroundImage: "url('/images/brightpath-bg.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
       }}
     >
       {/* Semi-transparent overlay for readability */}
       <div className="absolute inset-0 bg-slate-900 opacity-80 z-0"></div>
 
-      <motion.div 
+      <motion.div
         className="container mx-auto relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -69,10 +69,13 @@ const ServicesPage: React.FC = () => {
           <div className="text-white">
             <h2 className="text-4xl font-bold mb-4">Our Process</h2>
             <p className="text-lg mb-6">
-              At BrightPath Web Studio, every website we create follows a clear, purposeful path—from the first spark of an idea to a seamless, fully launched experience.
+              At BrightPath Web Studio, every website we create follows a clear,
+              purposeful path—from the first spark of an idea to a seamless,
+              fully launched experience.
             </p>
             <p className="text-lg">
-              Our six-phase approach ensures each project is thoughtfully planned, beautifully designed, and built to perform.
+              Our six-phase approach ensures each project is thoughtfully
+              planned, beautifully designed, and built to perform.
             </p>
             <button className="mt-8 bg-yellow-500 text-black font-bold py-3 px-6 rounded-full hover:bg-yellow-400 transition-colors">
               Start Your Project
