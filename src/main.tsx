@@ -2,24 +2,29 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./components/ui/RootLayout.tsx";
-import HomePage from "./components/pages/HomePage.tsx";
-import ContactPage from "./components/pages/ContactPage";
-import AboutPage from "./components/pages/AboutPage";
-import TermsPage from "./components/pages/TermsPage";
-import PrivacyPage from "./components/pages/PrivacyPage";
-import TestimonialsPage from "./components/pages/TestimonialsPage";
+import HomePage from "./pages/HomePage.tsx";
+import ContactPage from "./pages/ContactPage.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
+import TermsPage from "./pages/TermsPage.tsx";
+import PrivacyPage from "./pages/PrivacyPage.tsx";
+import TestimonialsPage from "./pages/TestimonialsPage.tsx";
 import ReviewsList from "./components/ui/ReviewsList.tsx";
-import ServicesPage from './components/pages/ServicesPage.tsx';
+import ServicesPage from "./pages/ServicesPage.tsx";
 import "./index.css";
+// Import the initializeTheme function from your Zustand store
+import { initializeTheme } from "./store/appStore";
+import { ThemeProvider } from "./components/ThemeProvider.tsx";
+
+// Call the theme initialization function here, before the router is created
+initializeTheme();
 
 const router = createBrowserRouter([
   {
     path: "/",
-
-    element: <RootLayout />, // The layout is the main element
+    element: <RootLayout />,
     children: [
       {
-        index: true, // This makes HomePage the default child route
+        index: true,
         element: <HomePage />,
       },
       {
@@ -27,7 +32,7 @@ const router = createBrowserRouter([
         element: <AboutPage />,
       },
       {
-        path: 'services', // The new path for the services page
+        path: "services",
         element: <ServicesPage />,
       },
       {
@@ -56,6 +61,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
