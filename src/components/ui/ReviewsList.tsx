@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import ReviewCard from "./ReviewCard";
+import ReviewCard from "../ReviewCard";
 
 // Define the TypeScript interface for our review data.
 interface Review {

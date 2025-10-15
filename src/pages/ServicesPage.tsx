@@ -5,8 +5,10 @@ import { FlipCardContainer } from "../components/ui/FlipCard";
 import { getFlipCardPhases } from "../../backend/services/api.service";
 import { motion } from "framer-motion";
 import { PhaseCard } from "../types/phaseCard";
+import { useAppStore } from '@/store/appStore';
 
 const ServicesPage: React.FC = () => {
+  const { theme } = useAppStore();
   const [cards, setCards] = useState<PhaseCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -31,7 +33,7 @@ const ServicesPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="text-center py-10 text-white bg-slate-900 min-h-screen">
+      <div className={`text-center py-10 min-h-screen ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'}`}>
         Loading our process...
       </div>
     );
@@ -39,7 +41,7 @@ const ServicesPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className="text-center py-10 text-red-500 bg-slate-900 min-h-screen">
+      <div className={`text-center py-10 text-red-500 min-h-screen ${theme === 'dark' ? 'bg-slate-900' : 'bg-white'}`}>
         Error: {error}
       </div>
     );
@@ -47,7 +49,7 @@ const ServicesPage: React.FC = () => {
 
   return (
     <div
-      className="py-20 px-8 min-h-screen relative overflow-hidden"
+      className={`py-20 mt-20 px-8 min-h-screen relative overflow-hidden`}
       style={{
         backgroundImage: "url('/images/brightpath-bg.jpg')",
         backgroundSize: "cover",
@@ -64,10 +66,13 @@ const ServicesPage: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-          {/* Left Column: Text Content */}
+        {/* Main grid container with two columns on large screens */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 items-center">
+          {/* Left Column: Text Content with constrained width */}
           <div className="text-white">
-            <h2 className="text-4xl font-bold mb-4">Our Process</h2>
+            <h2 className="text-4xl font-bold mb-4">
+              Our <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}>Process</span>
+            </h2>
             <p className="text-lg mb-6">
               At BrightPath Web Studio, every website we create follows a clear,
               purposeful path—from the first spark of an idea to a seamless,
@@ -82,8 +87,8 @@ const ServicesPage: React.FC = () => {
             </button>
           </div>
 
-          {/* Right two columns for the cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:col-span-2">
+          {/* Right Column: Cards with a 3-column grid layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FlipCardContainer cards={cards} />
           </div>
         </div>

@@ -1,5 +1,8 @@
 import { Lightbulb, Compass, Star } from "lucide-react";
 import { useAppStore } from '@/store/appStore';
+import { Link } from 'react-router-dom';
+import ReviewWidget from '../components/ReviewWidget';
+import PortfolioSection from '../components/PortfolioSection';
 
 // Define a single props type for all sections that will receive the 'theme' prop
 type SectionProps = {
@@ -47,19 +50,19 @@ const ServicesSection = ({ theme }: SectionProps) => {
       title: "Web Design & Development",
       description:
         "Creating stunning, high-performance websites tailored to your brand.",
-      icon: <Compass className={`h-8 w-8 mb-4 ${theme === 'dark' ? 'text-secondary' : 'text-primary'}`} />,
+      icon: <Compass className={`h-8 w-8 mb-4 ${theme === 'dark' ? 'text-primary' : 'text-primary'}`} />,
     },
     {
       title: "Digital Strategy",
       description:
         "Crafting data-driven strategies to illuminate your path to growth.",
-      icon: <Lightbulb className={`h-8 w-8 mb-4 ${theme === 'dark' ? 'text-secondary' : 'text-primary'}`} />,
+      icon: <Lightbulb className={`h-8 w-8 mb-4 ${theme === 'dark' ? 'text-primary' : 'text-primary'}`} />,
     },
     {
       title: "Brand Identity",
       description:
         "Building memorable brands that shine bright and stand out from the crowd.",
-      icon: <Star className={`h-8 w-8 mb-4 ${theme === 'dark' ? 'text-secondary' : 'text-primary'}`} />,
+      icon: <Star className={`h-8 w-8 mb-4 ${theme === 'dark' ? 'text-primary' : 'text-primary'}`} />,
     },
   ];
 
@@ -73,13 +76,14 @@ const ServicesSection = ({ theme }: SectionProps) => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`p-8 rounded-lg shadow-xl hover:transform hover:scale-105 transition-all duration-300 hover:shadow-2xl ${theme === 'light' ? 'bg-card' : 'bg-primary'}`}
+              className={`p-8 rounded-lg shadow-xl hover:transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border border-2-primary ${theme === 'light' ? 'bg-[#1A2238]' : 'bg-white'}`}
             >
               <div className="flex justify-center">{service.icon}</div>
-              <h3 className="text-2xl font-poppins font-semibold text-card-foreground mb-4">
+              <h3 className="text-2xl font-poppins font-semibold text-primary mb-4">
                 {service.title}
               </h3>
-              <p className="font-lato text-secondary-foreground">{service.description}</p>
+              {/* <p className="font-lato text-services-card-paragraph-text">{service.description}</p> */}
+              <p className={`font-lato ${theme === 'light' ? 'text-white' : 'text-secondary'}`}>{service.description}</p>
             </div>
           ))}
         </div>
@@ -92,7 +96,7 @@ const ServicesSection = ({ theme }: SectionProps) => {
 // BRAND STORY SECTION COMPONENT
 // ===================================
 const BrandStorySection = ({ theme }: SectionProps) => (
-  <section className="bg-background py-20">
+  <section className={`py-20 ${theme === 'dark' ? 'bg-[#273442]' : 'bg-gray-200'}`}>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       <div>
         <div className="w-full h-80 bg-accent/10 rounded-lg flex items-center justify-center border border-accent/20">
@@ -107,7 +111,7 @@ const BrandStorySection = ({ theme }: SectionProps) => (
       </div>
       <div>
         <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-4">
-          A Beacon in the Digital Fog
+          A <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}>Beacon</span> in the Digital Fog
         </h2>
         <p className="font-lato text-muted-foreground leading-relaxed text-lg mb-6">
           In a crowded online world, clarity is everything. Like a lighthouse on
@@ -121,6 +125,11 @@ const BrandStorySection = ({ theme }: SectionProps) => (
             Illuminating Success
           </span>
         </div>
+        <Link to="/review">
+          <button className="mt-8 bg-primary text-primary-foreground font-bold font-lato py-2 px-6 rounded-md text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+            Read Our Reviews
+          </button>
+        </Link>
       </div>
     </div>
   </section>
@@ -135,6 +144,15 @@ const HomePage = () => {
         <HeroSection theme={theme} />
         <ServicesSection theme={theme} />
         <BrandStorySection theme={theme} />
+        <PortfolioSection />
+        <section id="reviews" className="py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-12">
+              Client <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}>Testimonials</span>
+            </h2>
+            <ReviewWidget />
+          </div>
+        </section>
       </main>
     </div>
   );
