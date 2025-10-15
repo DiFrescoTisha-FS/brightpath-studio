@@ -1,5 +1,7 @@
 /* globals.css */
 
+/* globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,18 +11,21 @@
      LIGHT THEME (Default)
      ==================================== */
   :root {
-    --header-bg: 226 41% 96%;        /* #F3F4F6 - Light Theme Header Background */
+    --header-bg: 0 0% 100%;/* #white - Light Theme Header Background */
     --header-foreground: 226 41% 16%;/* #1A2238 - Light Theme Header Text Color */
     --background: 0 0% 100%;        /* #FFFFFF - Default page background */
     --foreground: 226 41% 16%;      /* #1A2238 - Default text color */
     
     /* Corrected Card Colors for Light Theme */
-    --card: 220 15% 96%;             /* #E5E7EB - Card Background (Light Gray) */
-    --card-foreground: 47 86% 62%;  /* #F2C94C - Card Title Text (Yellow) */
+    --services-section-bg: 226 41% 96%;/* #F3F4F6 */
+    --services-card-bg: 220 15% 96%; /* #E5E7EB */
+    --services-card-title-text: 47 86% 62%; /* #F2C94C */
+    --services-card-icon: 47 86% 62%; /* #F2C94C */
+    --services-card-paragraph-text: 0 0% 100%;/* #white  */
     
     --primary: 47 86% 62%;          /* #F2C94C - Buttons, Gold */
     --primary-foreground: 226 41% 16%;/* #1A2238 - Button Text */
-    --secondary: 47 86% 62%;       /* #F2C94C - Headings/Icons (Yellow) */
+    --secondary: 226 41% 16%;       /* #1A2238 - Headings/Icons */
     --secondary-foreground: 226 41% 16%;/* #1A2238 - Paragraph Text (Dark Blue) */
     --muted: 220 15% 96%;           /* For muted text or backgrounds */
     --muted-foreground: 215 16.3% 46.9%;/* #9CA5AF - Stone/Paragraph Text */
@@ -44,13 +49,16 @@
     --foreground: 0 0% 100%;         /* #FFFFFF - Default text color */
     
     /* Corrected Card Colors for Dark Theme */
-    --card: 47 86% 62%;             /* #F2C94C - Card Background (Yellow) */
-    --card-foreground: 226 41% 16%; /* #1A2238 - Card Title Text (Dark Blue) */
+    --services-section-bg: 226 41% 16%; /* #1A2238 */
+    --services-card-bg: 47 86% 62%;  /* #F2C94C */
+    --services-card-title-text: 226 41% 16%; /* #1A2238 */
+    --services-card-icon: 226 41% 16%; /* #1A2238 */
+    --services-card-paragraph-text: 226 41% 16%; /* #1A2238 */
     
     --primary: 47 86% 62%;           /* #F2C94C - Buttons, Gold */
     --primary-foreground: 226 41% 16%;/* #1A2238 - Button Text */
-    --secondary: 226 41% 16%;       /* #1A2238 - Headings/Icons (Dark Blue) */
-    --secondary-foreground: 0 0% 100%;/* #FFFFFF - Paragraph Text (White) */
+    --secondary: 215 16.3% 46.9%;    /* #9CA5AF - Accent/Icon color, Dark */
+    --secondary-foreground: 0 0% 100%;/* #FFFFFF - Paragraph Text */
 
     --muted: 215 16.3% 46.9%;        /* Stone/Paragraph Text */
     --muted-foreground: 0 0% 100%;   /* White text on muted background */
@@ -96,4 +104,20 @@
   .skeleton {
     @apply animate-pulse bg-muted rounded;
   }
+}
+
+@layer utilities {
+    .text-shadow-md {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    }
+    .drop-shadow-lg {
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+    }
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 }
