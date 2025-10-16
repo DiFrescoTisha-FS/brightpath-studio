@@ -90,10 +90,13 @@ module.exports = {
 			  sm: 'calc(var(--radius) - 4px)'
 		  },
 		  textShadow: {
-			  'md': '0 2px 4px rgba(0, 0, 0, 0.5)',
+			  'md': '0em 0em 0.1em rgba(0, 0, 0, 0.2)',
 		  },
 		  dropShadow: {
 			  'lg': '0 4px 6px rgba(0, 0, 0, 0.25)',
+		  },
+		  boxShadow: {
+			'glow-primary': '0 0 15px 4px rgba(242, 201, 76, 0.6)',
 		  },
 	  }
 	},

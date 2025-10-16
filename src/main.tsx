@@ -1,19 +1,19 @@
+// main.tsx
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootLayout from "./components/ui/RootLayout.tsx";
+// import RootLayout from "./components/ui/RootLayout.tsx"; // <-- REMOVE THIS LINE
+import App from "./App.tsx"; // <-- ADD THIS LINE
 import HomePage from "./pages/HomePage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import TermsPage from "./pages/TermsPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
-// import TestimonialsPage from "./pages/TestimonialsPage.tsx";
 import ReviewsList from "./components/ui/ReviewsList.tsx";
 import ServicesPage from "./pages/ServicesPage.tsx";
 import "./index.css";
-// Import the initializeTheme function from your Zustand store
 import { initializeTheme } from "./store/appStore";
-// import { ThemeProvider } from "./components/ThemeProvider.tsx";
 import ReviewsPage from "./pages/ReviewsPage.tsx";
 
 // Call the theme initialization function here, before the router is created
@@ -22,7 +22,7 @@ initializeTheme();
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: <App />, // <-- CHANGE THIS LINE
     children: [
       {
         index: true,
@@ -62,6 +62,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

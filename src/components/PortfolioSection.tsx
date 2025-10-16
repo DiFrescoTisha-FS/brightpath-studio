@@ -50,7 +50,7 @@ const PortfolioSection = () => {
             // A motion.div for the card wrapper to handle the hover animation
             <motion.div
               key={item.id}
-              className={`relative rounded-2xl shadow-xl overflow-hidden cursor-pointer
+              className={`relative rounded-2xl border border-primary shadow-glow-primary overflow-hidden cursor-pointer
                           transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]
                           ${theme === 'dark' ? 'bg-[#273442]' : 'bg-white'}`}
               // Framer Motion's whileHover prop is perfect for this effect
@@ -75,7 +75,7 @@ const PortfolioSection = () => {
 
               {/* Card content with a gradient overlay for better readability */}
               <div className="p-6">
-                <h3 className={`text-2xl font-poppins font-semibold mb-2 ${theme === 'dark' ? 'text-primary' : 'text-primary'}`}>
+                <h3 className={`text-2xl font-poppins font-semibold mb-2 text-shadow-md ${theme === 'dark' ? 'text-primary' : 'text-primary'}`}>
                   {item.title}
                 </h3>
                 <p className={`font-lato text-base ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>

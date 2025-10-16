@@ -19,11 +19,11 @@
     /* Corrected Card Colors for Light Theme */
     --services-section-bg: 226 41% 96%;/* #F3F4F6 */
     --services-card-bg: 220 15% 96%; /* #E5E7EB */
-    --services-card-title-text: 47 86% 62%; /* #F2C94C */
-    --services-card-icon: 47 86% 62%; /* #F2C94C */
+    --services-card-title-text: 44 91% 54%; /* #EBB109 */
+    --services-card-icon: 44 91% 54%; /* #EBB109 */
     --services-card-paragraph-text: 0 0% 100%;/* #white  */
     
-    --primary: 47 86% 62%;          /* #F2C94C - Buttons, Gold */
+    --primary: 44 91% 54%;          /* #EBB109 - Buttons, Gold */
     --primary-foreground: 226 41% 16%;/* #1A2238 - Button Text */
     --secondary: 226 41% 16%;       /* #1A2238 - Headings/Icons */
     --secondary-foreground: 226 41% 16%;/* #1A2238 - Paragraph Text (Dark Blue) */
@@ -50,12 +50,12 @@
     
     /* Corrected Card Colors for Dark Theme */
     --services-section-bg: 226 41% 16%; /* #1A2238 */
-    --services-card-bg: 47 86% 62%;  /* #F2C94C */
+    --services-card-bg: 44 91% 54%;  /* #ebb109 */
     --services-card-title-text: 226 41% 16%; /* #1A2238 */
     --services-card-icon: 226 41% 16%; /* #1A2238 */
     --services-card-paragraph-text: 226 41% 16%; /* #1A2238 */
     
-    --primary: 47 86% 62%;           /* #F2C94C - Buttons, Gold */
+    --primary: 44 91% 54%;           /* #EBB109 - Buttons, Gold */
     --primary-foreground: 226 41% 16%;/* #1A2238 - Button Text */
     --secondary: 215 16.3% 46.9%;    /* #9CA5AF - Accent/Icon color, Dark */
     --secondary-foreground: 0 0% 100%;/* #FFFFFF - Paragraph Text */
@@ -98,6 +98,10 @@
     @apply bg-gradient-to-r from-yellow-500 to-orange-400 bg-clip-text text-transparent;
   }
 
+  .gradient-bg-dark {
+    @apply bg-gradient-to-r from-yellow-500 to-orange-400
+  }
+
   .card-hover {
     @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
   }
@@ -108,8 +112,9 @@
 
 @layer utilities {
     .text-shadow-md {
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        text-shadow: 0 0.5px 1.5px rgba(0, 0, 0, 0.25);
     }
+
     .drop-shadow-lg {
         filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
     }

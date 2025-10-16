@@ -53,15 +53,16 @@ const ContactPage: React.FC = () => {
 
   const themeClasses = {
     bg: theme === 'dark' ? 'bg-background' : 'bg-white',
-    text: theme === 'dark' ? 'text-white' : 'text-slate-800',
+    text: theme === 'dark' ? 'text-white' : 'text-white',
     textMuted: theme === 'dark' ? 'text-muted-foreground' : 'text-slate-600',
     cardBg: theme === 'dark' ? 'bg-midnight/50' : 'bg-gray-50',
     cardBorder: theme === 'dark' ? 'border-stone/20' : 'border-gray-200',
     inputBg: theme === 'dark' ? 'bg-midnight' : 'bg-gray-100',
     inputBorder: theme === 'dark' ? 'border-stone/30' : 'border-gray-300',
     inputPlaceholder: theme === 'dark' ? 'placeholder-stone/60' : 'placeholder-gray-400',
-    iconColor: theme === 'dark' ? 'text-gold' : 'text-blue-600',
-    goldText: theme === 'dark' ? 'text-gold' : 'text-primary'
+    iconColor: theme === 'dark' ? 'text-primary' : 'text-primary',
+    goldText: theme === 'dark' ? 'text-primary' : 'text-primary',
+    textBoxBG: theme === 'dark' ? 'bg-gray-700' : 'bg-[#f9fafb]'
   };
 
   return (
@@ -69,7 +70,7 @@ const ContactPage: React.FC = () => {
       {/* Header Section */}
       <div className="text-center pt-28 pb-12 px-4">
         <h1 className={`text-4xl md:text-5xl font-poppins font-bold ${themeClasses.text} mb-4`}>
-          <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}>Contact</span> Us
+          <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-dark'}>Contact</span> Us
         </h1>
         <p className={`text-lg font-lato ${themeClasses.textMuted} max-w-2xl mx-auto`}>
           Ready to illuminate your digital presence? Let's start a conversation about bringing your vision to life.
@@ -83,7 +84,7 @@ const ContactPage: React.FC = () => {
           {/* Left Column - Contact Info */}
           <div className="space-y-8">
             <div className={`${themeClasses.cardBg} p-8 rounded-lg border ${themeClasses.cardBorder}`}>
-              <h2 className={`text-2xl font-poppins font-semibold ${themeClasses.goldText} mb-6`}>
+              <h2 className={`text-2xl font-poppins font-semibold text-primary mb-6 text-shadow-md`}>
                 Get In Touch
               </h2>
               
@@ -107,7 +108,7 @@ const ContactPage: React.FC = () => {
                 <div className="flex items-start space-x-4">
                   <MapPin className={`w-6 h-6 ${themeClasses.iconColor} mt-1 flex-shrink-0`} />
                   <div>
-                    <h3 className={`font-poppins font-semibold ${themeClasses.text} mb-1`}>
+                    <h3 className={`font-poppins font-semibold text-lg ${themeClasses.text} mb-1`}>
                       Address
                     </h3>
                     <p className={`font-lato ${themeClasses.textMuted}`}>
@@ -121,7 +122,7 @@ const ContactPage: React.FC = () => {
                 <div className="flex items-start space-x-4">
                   <Phone className={`w-6 h-6 ${themeClasses.iconColor} mt-1 flex-shrink-0`} />
                   <div>
-                    <h3 className={`font-poppins font-semibold ${themeClasses.text} mb-1`}>
+                    <h3 className={`font-poppins font-semibold text-lg ${themeClasses.text} mb-1`}>
                       Phone
                     </h3>
                     <p className={`font-lato ${themeClasses.textMuted}`}>
@@ -134,7 +135,7 @@ const ContactPage: React.FC = () => {
                 <div className="flex items-start space-x-4">
                   <Mail className={`w-6 h-6 ${themeClasses.iconColor} mt-1 flex-shrink-0`} />
                   <div>
-                    <h3 className={`font-poppins font-semibold ${themeClasses.text} mb-1`}>
+                    <h3 className={`font-poppins font-semibold text-lg ${themeClasses.text} mb-1`}>
                       Email
                     </h3>
                     <p className={`font-lato ${themeClasses.textMuted}`}>
@@ -146,8 +147,8 @@ const ContactPage: React.FC = () => {
             </div>
 
             {/* Additional Info Box */}
-            <div className={`bg-gold/10 p-6 rounded-lg border border-gold/20`}>
-              <h3 className={`font-poppins font-semibold ${themeClasses.goldText} mb-3`}>
+            <div className={`p-6 rounded-lg border border-gold/20 ${themeClasses.textBoxBG}`}>
+              <h3 className={`font-poppins font-semibold text-shadow-md ${themeClasses.goldText} mb-3`}>
                 Why Choose BrightPath?
               </h3>
               <p className={`font-lato text-sm leading-relaxed ${themeClasses.textMuted}`}>
@@ -159,7 +160,7 @@ const ContactPage: React.FC = () => {
 
           {/* Right Column - Contact Form */}
           <div className={`${themeClasses.cardBg} p-8 rounded-lg border ${themeClasses.cardBorder}`}>
-            <h2 className={`text-2xl font-poppins font-semibold ${themeClasses.goldText} mb-6`}>
+            <h2 className={`text-2xl font-poppins font-semibold text-shadow-md ${themeClasses.goldText} mb-6`}>
               Send Us a Message
             </h2>
             
@@ -230,7 +231,7 @@ const ContactPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`w-full bg-[#F2C94C] text-midnight font-lato font-bold py-3 px-6 rounded-lg transition-all duration-300 transform shadow-lg hover:shadow-xl
+                className={`w-full gradient-bg-dark text-shadow-md text-midnight font-lato font-bold py-3 px-6 rounded-lg transition-all duration-300 transform shadow-lg hover:shadow-xl
                 ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-yellow-400 hover:scale-105'}`}
               >
                 {loading ? 'Sending...' : 'Send Message'}

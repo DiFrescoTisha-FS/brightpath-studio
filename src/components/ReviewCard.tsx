@@ -5,13 +5,14 @@
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import type { Review } from '@/types/index';
+import { useAppStore } from '@/store/appStore';
 
 // Helper component for a single review card
 const ReviewCard = ({ review }: { review: Review }) => {
-
+  const { theme } = useAppStore();
   return (
     <motion.div 
-      className="bg-card p-8 rounded-lg shadow-xl text-card-foreground border border-border flex flex-col items-center text-center"
+      className={`p-8 rounded-lg text-white border border-primary shadow-glow-primary flex flex-col items-center text-center ${theme === 'dark'? 'bg-[#1A2238]' : 'bg-[#1A2238]'}`}
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -22,7 +23,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
         {Array.from({ length: 5 }, (_, i) => (
           <Star 
             key={i} 
-            className={`w-5 h-5 ${i < review.rating ? 'text-primary' : 'text-muted-foreground'}`} 
+            className={`w-5 h-5 ${i < review.rating ? 'text-primary' : 'text-primary'}`} 
             fill="currentColor"
           />
         ))}
@@ -31,7 +32,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
       <p className="text-lg font-lato italic leading-relaxed mb-4 flex-grow">"{review.quote}"</p>
       
       <div className="mt-auto">
-        <h4 className="font-poppins font-bold text-lg">{review.author}</h4>
+        <h4 className="font-poppins font-bold text-lg text-primary text-shadow-md">{review.author}</h4>
         <p className="text-sm text-muted-foreground">Client Review</p>
       </div>
     </motion.div>

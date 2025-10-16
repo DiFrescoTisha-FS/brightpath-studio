@@ -1,7 +1,7 @@
 // src/store/appStore.ts
 import { create } from 'zustand';
 
-type Theme = 'dark' | 'light';
+export type Theme = 'dark' | 'light';
 
 interface AppState {
   theme: Theme;

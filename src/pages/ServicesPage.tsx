@@ -51,14 +51,14 @@ const ServicesPage: React.FC = () => {
     <div
       className={`py-20 mt-20 px-8 min-h-screen relative overflow-hidden`}
       style={{
-        backgroundImage: "url('/images/brightpath-bg.jpg')",
+        backgroundImage: "url('/images/BG-Lighthouse-Desktop.jpeg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
       }}
     >
       {/* Semi-transparent overlay for readability */}
-      <div className="absolute inset-0 bg-slate-900 opacity-80 z-0"></div>
+      {/* <div className="absolute inset-0 bg-slate-900 opacity-80 z-0"></div> */}
 
       <motion.div
         className="container mx-auto relative z-10"
@@ -71,18 +71,18 @@ const ServicesPage: React.FC = () => {
           {/* Left Column: Text Content with constrained width */}
           <div className="text-white">
             <h2 className="text-4xl font-bold mb-4">
-              Our <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}>Process</span>
+              Our <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-dark'}>Process</span>
             </h2>
-            <p className="text-lg mb-6">
+            <p className="text-lg mb-6 text-shadow-md">
               At BrightPath Web Studio, every website we create follows a clear,
               purposeful path—from the first spark of an idea to a seamless,
               fully launched experience.
             </p>
-            <p className="text-lg">
+            <p className="text-lg text-shadow-md">
               Our six-phase approach ensures each project is thoughtfully
               planned, beautifully designed, and built to perform.
             </p>
-            <button className="mt-8 bg-yellow-500 text-black font-bold py-3 px-6 rounded-full hover:bg-yellow-400 transition-colors">
+            <button className="mt-8 bg-yellow-500 text-white text-shadow-md font-bold py-3 px-6 rounded-md hover:bg-yellow-400 transition-colors">
               Start Your Project
             </button>
           </div>

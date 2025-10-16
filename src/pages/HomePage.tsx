@@ -29,11 +29,11 @@ const HeroSection = ({ theme }: SectionProps) => (
       <h1 className="text-4xl md:text-6xl font-poppins font-bold mb-4">
         Guiding Your Business to <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}>Shine Bright Online</span>
       </h1>
-      <p className="text-lg md:text-xl text-muted-foreground font-lato mb-8">
+      <p className="text-lg md:text-xl text-muted-foreground font-lato mb-8 text-shadow-md">
         We are the beacon in the digital fog, crafting brilliant web experiences
         that navigate your brand to success.
       </p>
-      <button className="bg-primary text-primary-foreground font-bold font-lato py-2 px-6 rounded-md text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+      <button className="mt-8 bg-primary text-primary-foreground font-bold font-lato py-2 px-6 rounded-md text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl text-shadow-md">
         Begin Your Journey
       </button>
     </div>
@@ -50,19 +50,19 @@ const ServicesSection = ({ theme }: SectionProps) => {
       title: "Web Design & Development",
       description:
         "Creating stunning, high-performance websites tailored to your brand.",
-      icon: <Compass className={`h-8 w-8 mb-4 ${theme === 'dark' ? 'text-primary' : 'text-primary'}`} />,
+      icon: <Compass className={`h-8 w-8 mb-4 drop-shadow-md ${theme === 'dark' ? 'text-primary' : 'text-primary'}`} />,
     },
     {
       title: "Digital Strategy",
       description:
         "Crafting data-driven strategies to illuminate your path to growth.",
-      icon: <Lightbulb className={`h-8 w-8 mb-4 ${theme === 'dark' ? 'text-primary' : 'text-primary'}`} />,
+      icon: <Lightbulb className={`h-8 w-8 mb-4 drop-shadow-md ${theme === 'dark' ? 'text-primary' : 'text-primary'}`} />,
     },
     {
       title: "Brand Identity",
       description:
         "Building memorable brands that shine bright and stand out from the crowd.",
-      icon: <Star className={`h-8 w-8 mb-4 ${theme === 'dark' ? 'text-primary' : 'text-primary'}`} />,
+      icon: <Star className={`h-8 w-8 mb-4 drop-shadow-md ${theme === 'dark' ? 'text-primary' : 'text-primary'}`} />,
     },
   ];
 
@@ -76,10 +76,10 @@ const ServicesSection = ({ theme }: SectionProps) => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`p-8 rounded-lg shadow-xl hover:transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border border-2-primary ${theme === 'light' ? 'bg-[#1A2238]' : 'bg-white'}`}
+              className={`p-8 rounded-lg hover:transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border border-primary shadow-glow-primary ${theme === 'light' ? 'bg-[#1A2238]' : 'bg-white'}`}
             >
               <div className="flex justify-center">{service.icon}</div>
-              <h3 className="text-2xl font-poppins font-semibold text-primary mb-4">
+              <h3 className="text-2xl font-poppins font-semibold text-primary mb-4 text-shadow-md">
                 {service.title}
               </h3>
               {/* <p className="font-lato text-services-card-paragraph-text">{service.description}</p> */}
@@ -104,14 +104,14 @@ const BrandStorySection = ({ theme }: SectionProps) => (
             <img
               src="/images/lh-5.jpeg"
               alt="Lighthouse Graphic"
-              className="h-auto w-full mx-auto mb-4"
+              className="h-auto w-full mx-auto mb-4 rounded-lg shadow-glow-primary border border-primary"
             />
           </div>
         </div>
       </div>
       <div>
         <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-4">
-          A <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}>Beacon</span> in the Digital Fog
+          A <span className={`text-shadow-none ${theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}`}>Beacon</span> in the Digital Fog
         </h2>
         <p className="font-lato text-muted-foreground leading-relaxed text-lg mb-6">
           In a crowded online world, clarity is everything. Like a lighthouse on
@@ -126,7 +126,7 @@ const BrandStorySection = ({ theme }: SectionProps) => (
           </span>
         </div>
         <Link to="/review">
-          <button className="mt-8 bg-primary text-primary-foreground font-bold font-lato py-2 px-6 rounded-md text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <button className="mt-8 bg-primary text-primary-foreground font-bold font-lato py-2 px-6 rounded-md text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl text-shadow-md">
             Read Our Reviews
           </button>
         </Link>
