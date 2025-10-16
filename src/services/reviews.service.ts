@@ -1,14 +1,23 @@
 // src/services/api/reviews.service.ts
 import axios from 'axios';
-import { WpReviewPost, Review } from '@/types'; // Import the corrected types
+import { WpReviewPost, Review } from '@/types'; 
 
-// Assuming your backend server is running on a specific port, e.g., 5001
-const API_URL = 'http://localhost:5001/api/reviews'; 
+// https://vite.dev/guide/
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/dev';
+const API_REVIEWS_PATH = '/api/reviews';
+const FULL_API_URL = `${API_BASE_URL}${API_REVIEWS_PATH}`;
+
 
 export const fetchReviews = async (): Promise<Review[]> => {
   try {
-    const response = await axios.get<WpReviewPost[]>(API_URL);
+    const response = await axios.get<WpReviewPost[]>(FULL_API_URL);
+    
     return response.data.map((review) => ({
+      // === FINAL FIX APPLIED HERE ===
+      // Convert the incoming ID to a NUMBER, as required by the Review type.
+      id: Number(review.id), 
+      
+      // Keep existing ACF mapping
       rating: review.acf.rating,
       author: review.acf.reviewer_name,
       quote: review.acf.review_text,
