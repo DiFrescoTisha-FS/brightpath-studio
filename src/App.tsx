@@ -1,17 +1,20 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/ui/Navbar";
-import Footer from "./components/ui/Footer"; 
+import Footer from "./components/ui/Footer";
+import { useAppStore } from './store/appStore'; 
 
-function App() {
+const App: React.FC = () => {
+  const { theme } = useAppStore();
+
   return (
     <>
-      <Navbar />
+      <Navbar theme={theme} />
       <main>
         <Outlet />
       </main>
-      <Footer />
+      <Footer theme={theme} />
     </>
   );
-}
+};
 
 export default App;

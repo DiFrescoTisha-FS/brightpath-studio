@@ -1,42 +1,63 @@
-// Footer.tsx
-import { Link } from 'react-router-dom';
-import { ThemeAwareLogo } from '../../components/theme-aware-logo';
-import React from 'react';
+// src/components/Footer.tsx
 
-// Define the props type for the Footer component
+import React from 'react';
+import { Link } from 'react-router-dom';
+import type { Theme } from '@/store/appStore';
+
+// The Footer component now includes the "Inspired" section content
 interface FooterProps {
-  theme: 'light' | 'dark';
+  theme: Theme;
 }
 
 const Footer: React.FC<FooterProps> = ({ theme }) => {
+  const footerClasses = theme === 'dark' ? 'bg-[#1A2238] text-white' : 'bg-gray-100 text-gray-800';
+  const textClasses = theme === 'dark' ? 'text-white' : 'text-gray-800';
+  const linkClasses = theme === 'dark' ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black';
+
   return (
-    <footer className="bg-deep-dark text-stone py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto text-center font-lato">
+    <footer className={`py-12 border-t ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} ${footerClasses}`}>
+      <div className="container mx-auto px-4 text-center">
+        {/* === START OF THE NEW CONSOLIDATED SECTION === */}
+        <h3 className={`text-xl font-poppins font-bold text-shadow-md ${textClasses} mb-2`}>
+          Bright Path Web Studio LLC
+        </h3>
         
-        {/* Logo and Business Name */}
-        <div className="mb-6 flex justify-center items-center flex-col">
-          <ThemeAwareLogo />
-          <p className={`font-poppins text-lg ${theme === 'dark' ? 'text-white' : 'text-stone'}`}>BrightPath Web Studio, LLC</p>
+        {/* Lighthouse Image */}
+        <div className="my-4 inline-block">
+          <img
+            src="/images/lighthouse-gift.png" // Update this path to your lighthouse image
+            alt="Lighthouse logo"
+            className="h-24 w-auto mx-auto rounded-full pb-4 pt-1 border border-primary shadow-glow-primary"
+          />
         </div>
+        
+        {/* Inspired By Text */}
+        <p className={`font-lato ${theme === 'dark' ? 'text-shadow-md' : ''} ${textClasses} mt-2`}>
+          Inspired by Edward Almeida
+        </p>
+        {/* === END OF THE NEW CONSOLIDATED SECTION === */}
 
-        {/* Legal & Navigation Links */}
-        <div className="mb-6 flex justify-center items-center space-x-6">
-          <Link to="/terms-of-service" className={`text-sm transition-colors ${theme === 'dark' ? 'hover:text-brightpath-blue' : 'hover:text-brightpath-blue'}`}>Terms of Service</Link>
-          <span className="text-stone">|</span>
-          <Link to="/privacy-policy" className={`text-sm transition-colors ${theme === 'dark' ? 'hover:text-brightpath-blue' : 'hover:text-brightpath-blue'}`}>Privacy Policy</Link>
-          <span className="text-stone">|</span>
-          <Link to="/contact" className={`text-sm transition-colors ${theme === 'dark' ? 'hover:text-brightpath-blue' : 'hover:text-brightpath-blue'}`}>Contact Us</Link>
+        <div className="flex justify-center space-x-4 mt-8">
+          <Link to="/terms-of-service" className={`font-lato ${theme === 'dark' ? 'text-shadow-md' : ''} ${linkClasses}`}>
+            Terms of Service
+          </Link>
+          <span className="text-gray-500">|</span>
+          <Link to="/privacy-policy" className={`font-lato ${theme === 'dark' ? 'text-shadow-md' : ''} ${linkClasses}`}>
+            Privacy Policy
+          </Link>
+          <span className="text-gray-500">|</span>
+          <Link to="/contact" className={`font-lato ${theme === 'dark' ? 'text-shadow-md' : ''} ${linkClasses}`}>
+            Contact Us
+          </Link>
         </div>
-
-        {/* Contact Information */}
-        <div className="text-xs space-y-1 mb-6">
-            <p className={`${theme === 'dark' ? 'text-white' : 'text-stone'}`}>129 Maybin Rd, Zirconia, NC 28790</p>
-            <p className={`${theme === 'dark' ? 'text-white' : 'text-stone'}`}>contact@brightpathwebstudio.com | (704) 453-3973</p>
-        </div>
-
-        {/* Copyright */}
-        <p className={`${theme === 'dark' ? 'text-stone/70' : 'text-stone/70'}`}>
-          &copy; {new Date().getFullYear()} BrightPath Web Studio, LLC. All Rights Reserved.
+        <p className="mt-4 text-sm text-gray-500">
+          129 Maybin Rd, Zirconia, NC 28790
+        </p>
+        <p className="mt-1 text-sm text-gray-500">
+          contact@brightpathwebstudio.com | (704) 453-3973
+        </p>
+        <p className="mt-6 text-sm text-gray-500">
+          &copy; {new Date().getFullYear()} Bright Path Web Studio LLC. All Rights Reserved.
         </p>
       </div>
     </footer>
