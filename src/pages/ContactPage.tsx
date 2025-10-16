@@ -10,6 +10,12 @@ interface FormData {
   message: string;
 }
 
+// === FIX APPLIED HERE: Define the API URL ===
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/dev';
+const CONTACT_FORM_URL = `${API_BASE_URL}/api/submit-contact-form`;
+// ===========================================
+
+
 const ContactPage: React.FC = () => {
   const { theme } = useAppStore(); // Get the current theme
   const [formData, setFormData] = useState<FormData>({
@@ -35,7 +41,7 @@ const ContactPage: React.FC = () => {
 
     try {
       // The crucial step: send the form data to our new backend API endpoint
-      const response = await axios.post('http://localhost:5001/api/submit-contact-form', formData);
+      const response = await axios.post(CONTACT_FORM_URL, formData);
 
       if (response.status === 200) {
         setStatus('success');

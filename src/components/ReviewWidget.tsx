@@ -5,6 +5,11 @@ import axios from 'axios';
 import ReviewCard from './ReviewCard';
 import { Review, MyReviewsResponse } from '@/types/index';
 
+// === FIX APPLIED HERE: Define the API URL ===
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/dev';
+const REVIEWS_URL = `${API_BASE_URL}/api/reviews`;
+// ===========================================
+
 const ReviewWidget: React.FC = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -14,7 +19,7 @@ const ReviewWidget: React.FC = () => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get<MyReviewsResponse[]>(
-          'http://localhost:5001/api/reviews'
+          REVIEWS_URL
         );
 
         // This is the crucial data mapping step!
