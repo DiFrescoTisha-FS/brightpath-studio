@@ -1,0 +1,25 @@
+service: my-express-app
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+# Defines the functions that will be deployed to AWS Lambda
+functions:
+  api:
+    # 'handler' points to the file (server.js) and the exported handler method
+    handler: server.handler
+    # 'events' is a list of events that trigger this function
+    events:
+      - http: # The type of event is HTTP
+          path: /      # Route the base path to our function
+          method: ANY  # Accept any HTTP method (GET, POST, etc.)
+          cors: true   # Enable CORS for the API Gateway endpoint
+      - http:
+          path: /{proxy+} # A proxy path that catches all sub-routes
+          method: ANY     # Accept any HTTP method for the proxy route
+          cors: true      # Enable CORS for the proxy route
+
+# 'plugins' must be a list of plugins to use, with each item preceded by a hyphen
+plugins:
+  - serverless-offline
