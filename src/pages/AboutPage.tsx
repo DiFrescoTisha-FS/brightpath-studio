@@ -6,19 +6,19 @@ const AboutPage = () => {
       title: 'A Journey of Dedication and Achievement',
       description: 'Graduating from Full Sail University was a defining moment in my journey. Combining creativity with technology led me to web development, and my dedication to the craft earned me the honor of class valedictorian.',
       imageUrl: '/images/boysandme.webp',
-      highlightColor: '#F2C94C',
+      highlightColor: '#ebb109',
     },
     {
       title: 'The Lighthouse That Started It, All',
       description: 'At my graduation, one of my instructors gifted me a lighthouse, symbolizing guidance, resilience, and perseverance. It was a reminder that even in the darkest times, we can find our way forward. This symbol became the foundation for BrightPath Web Studio LLC, inspiring me to help businesses navigate the digital world with confidence and clarity.',
       imageUrl: '/images/lighthouse-gift.png',
-      highlightColor: '#F2C94C',
+      highlightColor: '#ebb109',
     },
     {
       title: 'My Approach',
       description: 'I believe in thoughtful design, seamless functionality, and strategic branding. A website should do more than just exist—it should engage, inspire, and convert.',
       imageUrl: '/images/brightpath-logo-dark.png',
-      highlightColor: '#F2C94C',
+      highlightColor: '#ebb109',
     },
   ];
 
@@ -50,7 +50,7 @@ const AboutPage = () => {
               Like the mountains that shape my home, my journey in web development and design is built on strong foundations and endless creativity.
             </p>
             <motion.button
-              className="bg-gold text-midnight font-bold font-lato py-3 px-8 rounded-full text-lg hover:bg-yellow-400 transition-colors"
+              className="bg-primary text-[#1A2238] font-bold font-lato py-3 px-8 rounded-md text-lg text-shadow-md hover:bg-yellow-400 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -120,7 +120,7 @@ const AboutPage = () => {
                   
                   style={{
                     background: `linear-gradient(#1A2238, #1A2238) padding-box, 
-                                 linear-gradient(to right, #F2C94C, #1A2238, #F2C94C) border-box`,
+                                 linear-gradient(to right, #ebb109, #f59d2a, #F2C94C) border-box`,
                     border: '2px solid transparent',
                   }}
                   whileHover={{ 
@@ -136,7 +136,7 @@ const AboutPage = () => {
                     className="h-28 pt-4 rounded-t-xl object-cover"
                   />
                   
-                  <div className="p-8 text-[#F2C94C] text-center"> 
+                  <div className="p-8 text-[#ebb109] text-center"> 
                     <h3 className="font-poppins text-2xl md:text-3xl font-bold mb-3 text-brightpath-blue drop-shadow-lg">
                       {event.title}
                     </h3>
