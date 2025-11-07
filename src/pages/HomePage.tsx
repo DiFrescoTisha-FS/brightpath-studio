@@ -67,6 +67,7 @@ const ServicesSection = ({ theme }: SectionProps) => {
   ];
 
   return (
+    
     <section className="bg-services-bg py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-poppins font-bold text-services-h2 mb-12">
@@ -76,14 +77,15 @@ const ServicesSection = ({ theme }: SectionProps) => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`p-8 rounded-lg hover:transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border border-primary shadow-glow-primary ${theme === 'light' ? 'bg-[#1A2238]' : 'bg-white'}`}
+              className={`p-8 rounded-lg hover:transform hover:scale-105 transition-all duration-300 hover:shadow-2xl ${theme === 'dark' ? 'bg-[#1A2238] border border-primary shadow-glow-primary' : 'bg-gray-50 border border-secondary/20 shadow-2xl'}`}
             >
               <div className="flex justify-center">{service.icon}</div>
-              <h3 className="text-2xl font-poppins font-semibold text-primary mb-4 text-shadow-md">
+
+              <h3 className={`font-poppins text-2xl font-semibold mb-4 text-shadow-md ${theme === 'dark' ? 'text-white' : 'text-secondary/80'}`}>
                 {service.title}
               </h3>
               {/* <p className="font-lato text-services-card-paragraph-text">{service.description}</p> */}
-              <p className={`font-lato ${theme === 'light' ? 'text-white' : 'text-secondary'}`}>{service.description}</p>
+              <p className={`font-lato ${theme === 'dark' ? 'text-white' : 'text-secondary'}`}>{service.description}</p>
             </div>
           ))}
         </div>
@@ -143,7 +145,7 @@ const HomePage = () => {
       <main>
         <HeroSection theme={theme} />
         <ServicesSection theme={theme} />
-        <BrandStorySection theme={theme} />
+        
         <PortfolioSection />
         <section id="reviews" className="py-20">
           <div className="container mx-auto px-4 text-center">
@@ -151,8 +153,10 @@ const HomePage = () => {
               Client <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}>Testimonials</span>
             </h2>
             <ReviewWidget />
+           
           </div>
         </section>
+        <BrandStorySection theme={theme} />
       </main>
     </div>
   );

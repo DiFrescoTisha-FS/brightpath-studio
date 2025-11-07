@@ -48,9 +48,9 @@ module.exports.handler = serverless(app);
 // We check if the process is being run with the 'serverless-offline' plugin.
 // If it is, the serverless handler is used; otherwise, we listen on a local port.
 // This is the most common way to get both local and serverless functionality from one file.
-if (process.env.IS_OFFLINE) {
-  const PORT = process.env.PORT || 5001;
+if (process.env.NODE_ENV !== 'production' && !process.env.IS_OFFLINE) { 
+  const PORT = process.env.PORT || 3002; // Using 3002 as a standard backend port
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });
-}
+} 

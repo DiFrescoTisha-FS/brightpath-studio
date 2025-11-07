@@ -35,7 +35,7 @@ const PortfolioSection = () => {
   const { theme } = useAppStore();
 
   return (
-    <section className={`py-20 ${theme === 'dark' ? 'bg-[#1A2238]' : 'bg-gray-100'}`}>
+    <section className={`py-20 ${theme === 'dark' ? 'bg-[#273442]' : 'bg-gray-100'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-12 text-foreground">
           My <span className={theme === 'dark' ? 'gradient-text-dark' : 'gradient-text-light'}>Work</span>
@@ -50,9 +50,9 @@ const PortfolioSection = () => {
             // A motion.div for the card wrapper to handle the hover animation
             <motion.div
               key={item.id}
-              className={`relative rounded-2xl border border-primary shadow-glow-primary overflow-hidden cursor-pointer
+              className={`relative rounded-2xl overflow-hidden cursor-pointer
                           transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]
-                          ${theme === 'dark' ? 'bg-[#273442]' : 'bg-white'}`}
+                          ${theme === 'dark' ? 'bg-[#273442] border border-primary shadow-glow-primary' : 'bg-white border-2 border-secondary/20 shadow-lg'}`}
               // Framer Motion's whileHover prop is perfect for this effect
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -75,7 +75,7 @@ const PortfolioSection = () => {
 
               {/* Card content with a gradient overlay for better readability */}
               <div className="p-6">
-                <h3 className={`text-2xl font-poppins font-semibold mb-2 text-shadow-md ${theme === 'dark' ? 'text-primary' : 'text-primary'}`}>
+                <h3 className={`text-2xl font-poppins font-semibold mb-2 text-shadow-md ${theme === 'dark' ? 'text-primary' : 'text-secondary/80'}`}>
                   {item.title}
                 </h3>
                 <p className={`font-lato text-base ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>

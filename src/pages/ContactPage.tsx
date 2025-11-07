@@ -59,7 +59,7 @@ const ContactPage: React.FC = () => {
 
   const themeClasses = {
     bg: theme === 'dark' ? 'bg-background' : 'bg-white',
-    text: theme === 'dark' ? 'text-white' : 'text-white',
+    text: theme === 'dark' ? 'text-white' : 'text-slate-600',
     textMuted: theme === 'dark' ? 'text-muted-foreground' : 'text-slate-600',
     cardBg: theme === 'dark' ? 'bg-midnight/50' : 'bg-gray-50',
     cardBorder: theme === 'dark' ? 'border-stone/20' : 'border-gray-200',
@@ -72,6 +72,7 @@ const ContactPage: React.FC = () => {
   };
 
   return (
+    
     <div className={`min-h-screen ${themeClasses.bg} ${themeClasses.text} p-4`}>
       {/* Header Section */}
       <div className="text-center pt-28 pb-12 px-4">
@@ -237,7 +238,7 @@ const ContactPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`w-full gradient-bg-dark text-shadow-md text-midnight font-lato font-bold py-3 px-6 rounded-lg transition-all duration-300 transform shadow-lg hover:shadow-xl
+                className={`w-full bg-primary hover:bg-yellow-400 text-shadow-md text-midnight font-lato font-bold py-3 px-6 rounded-lg transition-all duration-300 transform shadow-lg hover:shadow-xl
                 ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-yellow-400 hover:scale-105'}`}
               >
                 {loading ? 'Sending...' : 'Send Message'}
