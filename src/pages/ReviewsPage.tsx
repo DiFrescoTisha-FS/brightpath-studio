@@ -9,39 +9,49 @@ import { Star } from 'lucide-react';
 import type { Review } from '@/types';
 
 // Helper component for a single review card
-const ReviewCard = ({ review }: { review: Review }) => (
-  <motion.div 
-    className="bg-card p-8 rounded-lg shadow-xl text-card-foreground border border-border flex flex-col items-center text-center"
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    {review.photoUrl && (
-      <img 
-        src={review.photoUrl} 
-        alt={review.author} 
-        className="w-20 h-20 object-cover mb-4 rounded-lg shadow-md"
-      />
-    )}
-    
-    <div className="flex items-center space-x-2 mb-4">
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star 
-          key={i} 
-          className={`w-5 h-5 ${i < review.rating ? 'text-primary' : 'text-muted-foreground'}`} 
-          fill="currentColor"
+const ReviewCard = ({ review }: { review: Review }) => { // FIX 1: Use curly braces { } for an explicit return
+  const { theme } = useAppStore(); // Now the hook call is valid
+  
+  // Custom classes based on the theme
+  const cardClasses = theme === 'dark' 
+    ? 'bg-background text-foreground' // Dark: use the dark background/foreground variables
+    : 'bg-services-card-bg text-secondary-foreground'; // Light: use the specific light theme card colors
+
+  return ( // Explicit return of the JSX
+    <motion.div 
+      // FIX 2: Use theme-aware, primary-based classes for the background, border, and text color
+      className={`p-8 rounded-lg border border-primary shadow-glow-primary flex flex-col items-center text-center ${cardClasses}`}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {review.photoUrl && (
+        <img 
+          src={review.photoUrl} 
+          alt={review.author} 
+          className="w-20 h-20 object-cover mb-4 rounded-lg shadow-md"
         />
-      ))}
-    </div>
-    
-    <p className="text-lg font-lato italic leading-relaxed mb-4 flex-grow">"{review.quote}"</p>
-    
-    <div className="mt-auto">
-      <h4 className="font-poppins font-bold text-lg">{review.author}</h4>
-      <p className="text-sm text-muted-foreground">Client Review</p>
-    </div>
-  </motion.div>
-);
+      )}
+      
+      <div className="flex items-center space-x-2 mb-4">
+        {Array.from({ length: 5 }, (_, i) => (
+          <Star 
+            key={i} 
+            className={`w-5 h-5 ${i < review.rating ? 'text-primary' : 'text-muted-foreground'}`} 
+            fill="currentColor"
+          />
+        ))}
+      </div>
+      
+      <p className="text-lg font-lato italic leading-relaxed mb-4 flex-grow text-foreground">"{review.quote}"</p>
+      
+      <div className="mt-auto">
+        <h4 className="font-poppins font-bold text-lg text-foreground">{review.author}</h4>
+        <p className="text-sm text-muted-foreground">Client Review</p>
+      </div>
+    </motion.div>
+  ); // End of explicit return
+};
 
 // Main ReviewsPage Component
 const ReviewsPage = () => {
@@ -49,8 +59,8 @@ const ReviewsPage = () => {
   const { reviews, loading, error } = useReviews();
 
   const buttonClasses = theme === 'dark' 
-    ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
-    : 'bg-transparent border-2 border-primary text-primary hover:bg-primary/10';
+    ? 'bg-primary text-primary-foreground hover:bg-primary/90 text-shadow-md' 
+    : 'bg-primary border-2 border-primary text-secondary hover:bg-primary/90 text-shadow-md';
 
   return (
     <>

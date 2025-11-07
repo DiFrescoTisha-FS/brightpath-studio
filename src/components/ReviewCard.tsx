@@ -12,7 +12,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
   const { theme } = useAppStore();
   return (
     <motion.div 
-      className={`p-8 rounded-lg text-white border border-primary shadow-glow-primary flex flex-col items-center text-center ${theme === 'dark'? 'bg-[#1A2238]' : 'bg-[#1A2238]'}`}
+      className={`p-8 rounded-lg flex flex-col items-center text-center ${theme === 'dark'? 'bg-[#1A2238] text-white border border-primary shadow-glow-primary' : 'bg-gray-50 shadow-md border border-secondary/20'}`}
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -32,7 +32,8 @@ const ReviewCard = ({ review }: { review: Review }) => {
       <p className="text-lg font-lato italic leading-relaxed mb-4 flex-grow">"{review.quote}"</p>
       
       <div className="mt-auto">
-        <h4 className="font-poppins font-bold text-lg text-primary text-shadow-md">{review.author}</h4>
+      {/* {`w-5 h-5 ${i < review.rating ? 'text-primary' : 'text-primary'}`}  */}
+        <h4 className={`font-poppins font-bold text-lg text-shadow-md ${theme === 'dark' ? 'text-primary' : 'text-secondary/80'}`}>{review.author}</h4>
         <p className="text-sm text-muted-foreground">Client Review</p>
       </div>
     </motion.div>

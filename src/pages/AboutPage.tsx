@@ -93,8 +93,14 @@ const AboutPage = () => {
         {/* Dark Overlay for better text readability */}
         <div className="absolute inset-0 bg-midnight/60 z-10"></div>
         
-        {/* The vertical timeline line */}
-        <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-gold via-brightpath-blue to-transparent transform -translate-x-1/2 z-10"></div>
+{/* The vertical timeline line - using valid theme-aware color tokens */}
+<div className="absolute top-0 left-1/2 w-2 h-full 
+    bg-gradient-to-b 
+    from-primary              {/* Maps to your Yellow/Gold color token */}
+    via-primary  {/* Maps to your Dark Blue/Foreground token */}
+    to-transparent 
+    transform -translate-x-1/2 z-10">
+</div>
         
         <div className="container mx-auto space-y-16 relative z-20">
           {timelineEvents.map((event, index) => (
