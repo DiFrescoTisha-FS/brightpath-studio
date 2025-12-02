@@ -84,7 +84,7 @@ const ServicesSection = ({ theme }: SectionProps) => {
               <h3 className={`font-poppins text-2xl font-semibold mb-4 text-shadow-md ${theme === 'dark' ? 'text-white' : 'text-secondary/80'}`}>
                 {service.title}
               </h3>
-              {/* <p className="font-lato text-services-card-paragraph-text">{service.description}</p> */}
+
               <p className={`font-lato ${theme === 'dark' ? 'text-white' : 'text-secondary'}`}>{service.description}</p>
             </div>
           ))}

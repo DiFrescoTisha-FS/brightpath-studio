@@ -59,10 +59,10 @@ const ContactPage: React.FC = () => {
 
   const themeClasses = {
     bg: theme === 'dark' ? 'bg-background' : 'bg-white',
-    text: theme === 'dark' ? 'text-white' : 'text-slate-600',
-    textMuted: theme === 'dark' ? 'text-muted-foreground' : 'text-slate-600',
-    cardBg: theme === 'dark' ? 'bg-midnight/50' : 'bg-gray-50',
-    cardBorder: theme === 'dark' ? 'border-stone/20' : 'border-gray-200',
+    text: theme === 'dark' ? 'text-primary' : 'text-slate-600',
+    textMuted: theme === 'dark' ? 'text-secondary' : 'text-slate-600',
+    cardBg: theme === 'dark' ? 'bg-gray-200' : 'bg-gray-50',
+    cardBorder: theme === 'dark' ? 'border-primary' : 'border-gray-200',
     inputBg: theme === 'dark' ? 'bg-midnight' : 'bg-gray-100',
     inputBorder: theme === 'dark' ? 'border-stone/30' : 'border-gray-300',
     inputPlaceholder: theme === 'dark' ? 'placeholder-stone/60' : 'placeholder-gray-400',
@@ -102,7 +102,7 @@ const ContactPage: React.FC = () => {
                     <div className={`w-full h-full bg-gold rounded-full`}></div>
                   </div>
                   <div>
-                    <h3 className="font-poppins font-semibold text-lg">
+                    <h3 className="font-poppins font-semibold text-lg text-primary">
                       BrightPath Web Studio, LLC
                     </h3>
                     <p className={`font-lato ${themeClasses.textMuted}`}>
@@ -238,7 +238,7 @@ const ContactPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`w-full bg-primary hover:bg-yellow-400 text-shadow-md text-midnight font-lato font-bold py-3 px-6 rounded-lg transition-all duration-300 transform shadow-lg hover:shadow-xl
+                className={`w-full bg-primary hover:bg-yellow-400 text-shadow-md text-secondary font-lato font-bold py-3 px-6 rounded-lg transition-all duration-300 transform shadow-lg hover:shadow-xl
                 ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-yellow-400 hover:scale-105'}`}
               >
                 {loading ? 'Sending...' : 'Send Message'}

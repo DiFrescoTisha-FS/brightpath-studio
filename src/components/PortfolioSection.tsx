@@ -52,7 +52,7 @@ const PortfolioSection = () => {
               key={item.id}
               className={`relative rounded-2xl overflow-hidden cursor-pointer
                           transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]
-                          ${theme === 'dark' ? 'bg-[#273442] border border-primary shadow-glow-primary' : 'bg-white border-2 border-secondary/20 shadow-lg'}`}
+                          ${theme === 'dark' ? 'bg-[#273442] border border-primary/30 shadow-glow-primary' : 'bg-white border-2 border-secondary/20'}`}
               // Framer Motion's whileHover prop is perfect for this effect
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

@@ -15,6 +15,8 @@ import ServicesPage from "./pages/ServicesPage.tsx";
 import "./index.css";
 import { initializeTheme } from "./store/appStore";
 import ReviewsPage from "./pages/ReviewsPage.tsx";
+import AngelCityCaseStudy from "./components/features/AngelCityMassageCaseStudy.tsx";
+import PortfolioProject from "./pages/PortfolioProject.tsx";
 
 // Call the theme initialization function here, before the router is created
 initializeTheme();
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
         element: <ReviewsPage />,
       },
       {
+        path: "portfolio",
+        element: <PortfolioProject />,
+      },
+      {
         path: "contact",
         element: <ContactPage />,
       },
@@ -55,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "reviews",
         element: <ReviewsList />,
+      },
+      {
+        path: "case-study",
+        element: <AngelCityCaseStudy />,
       },
     ],
   },

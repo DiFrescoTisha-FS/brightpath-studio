@@ -1,7 +1,5 @@
 /* globals.css */
 
-/* globals.css */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -107,6 +105,17 @@
   }
   .skeleton {
     @apply animate-pulse bg-muted rounded;
+  }
+  :root {
+    /* Light mode image URL */
+    --timeline-bg-light: url('/images/gray-grad-2.png'); 
+    /* Dark mode image URL */
+    --timeline-bg-dark: url('/images/blue-grad-2.png'); 
+  }
+  
+  .dark {
+    /* Tailwind applies .dark class in dark mode, swapping the variable */
+    --timeline-bg-light: url('/images/blue-grad-2.png'); 
   }
 }
 
